@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import userApi from "../../apis/userApi";
 import "./accountManagement.css";
 import axiosClient from '../../apis/axiosClient';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -342,8 +343,10 @@ const AccountManagement = () => {
             <Spin spinning={loading}>
                 <div style={{ marginTop: 20, marginLeft: 24 }}>
                     <Breadcrumb>
-                        <Breadcrumb.Item href="">
-                            <HomeOutlined />
+                        <Breadcrumb.Item>
+                            <Link to="/dash-board">
+                                <HomeOutlined />
+                            </Link>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item href="">
                             <UserOutlined />

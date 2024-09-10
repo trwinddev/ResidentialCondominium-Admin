@@ -23,6 +23,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import residenceRulesApi from "../../../apis/residenceRulesApi";
 import "./residenceRules.css";
+import { Link } from 'react-router-dom';
 
 const ResidenceRules = () => {
 
@@ -253,8 +254,10 @@ const ResidenceRules = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

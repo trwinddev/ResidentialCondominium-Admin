@@ -14,6 +14,7 @@ import { useHistory } from 'react-router-dom';
 import userApi from "../../../apis/userApi";
 import "./familyManagement.css";
 import emergencyMaintenanceApi from '../../../apis/emergencyMaintenanceApi';
+import { Link } from 'react-router-dom';
 
 const FamilyManagement = () => {
 
@@ -100,8 +101,10 @@ const FamilyManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

@@ -25,6 +25,7 @@ import React, { useEffect, useState } from 'react';
 import roomManagementApi from "../../../apis/roomManagementApi";
 import "./roomManagement.css";
 import userApi from '../../../apis/userApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -92,7 +93,7 @@ const RoomManagement = () => {
 
     const handleOkUser2 = async (values) => {
         console.log(values);
-        
+
         setLoading(true);
         try {
             const categoryList = {
@@ -380,8 +381,8 @@ const RoomManagement = () => {
                 </div>
             ),
         },
-        
-        
+
+
     ];
 
     const roomTypes = ['Căn hộ thông thường', 'Căn hộ studio', 'Shophouse', 'Căn hộ Duplex', ' Căn hộ Sky Villa'];
@@ -449,8 +450,10 @@ const RoomManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

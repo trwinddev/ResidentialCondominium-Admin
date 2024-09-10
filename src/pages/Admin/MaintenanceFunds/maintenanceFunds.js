@@ -27,6 +27,7 @@ import { useHistory } from 'react-router-dom';
 import maintenanceFundsApi from "../../../apis/maintenanceFundsApi";
 import "./maintenanceFunds.css";
 import dayjs from 'dayjs';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -287,8 +288,10 @@ const MaintenanceFunds = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

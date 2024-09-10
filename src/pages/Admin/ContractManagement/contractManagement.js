@@ -29,6 +29,7 @@ import dayjs from 'dayjs';
 import moment from 'moment';
 import VendorManagementApi from '../../../apis/vendorManagementApi';
 import uploadFileApi from '../../../apis/uploadFileApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -53,7 +54,7 @@ const ContractManagement = () => {
         try {
             const startDate = values.start_date;
             const endDate = values.end_date;
-    
+
             // Kiểm tra ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu
             if (endDate.isBefore(startDate)) {
                 notification.error({
@@ -61,7 +62,7 @@ const ContractManagement = () => {
                     description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu',
                 });
                 setLoading(false);
-                return; 
+                return;
             }
 
             const categoryList = {
@@ -102,7 +103,7 @@ const ContractManagement = () => {
         try {
             const startDate = values.start_date;
             const endDate = values.end_date;
-    
+
             // Kiểm tra ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu
             if (endDate.isBefore(startDate)) {
                 notification.error({
@@ -110,7 +111,7 @@ const ContractManagement = () => {
                     description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu',
                 });
                 setLoading(false);
-                return; 
+                return;
             }
 
             const categoryList = {
@@ -357,8 +358,10 @@ const ContractManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

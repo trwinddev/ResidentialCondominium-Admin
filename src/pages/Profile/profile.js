@@ -21,7 +21,7 @@ import { useHistory } from 'react-router-dom';
 import userApi from "../../apis/userApi";
 import "./profile.css";
 import uploadFileApi from '../../apis/uploadFileApi';
-
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
 
@@ -102,8 +102,10 @@ const Profile = () => {
             <Spin spinning={loading}>
                 <div style={{ marginTop: 20, marginLeft: 24 }}>
                     <Breadcrumb>
-                        <Breadcrumb.Item href="">
-                            <HomeOutlined />
+                        <Breadcrumb.Item>
+                            <Link to="/dash-board">
+                                <HomeOutlined />
+                            </Link>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item href="">
                             <FormOutlined />
@@ -123,7 +125,8 @@ const Profile = () => {
                                             style={{
                                                 width: 150,
                                                 height: 150,
-                                                borderRadius: '50%', 
+                                                borderRadius: '50%',
+                                                objectFit: 'cover'
                                             }}
                                         />
                                     </Row>
@@ -143,7 +146,7 @@ const Profile = () => {
                                             </Row>
                                             <Divider style={{ padding: 0, margin: 0 }} ></Divider>
                                         </Col>
-                                        <Button type="primary" style={{ marginTop: 15 }} onClick={() => setVisibleModal(true)}>Cập nhật Profile</Button>
+                                        <Button type="primary" style={{ marginTop: 15 }} onClick={() => setVisibleModal(true)}>Cập nhật</Button>
 
                                     </Row>
 
@@ -157,7 +160,7 @@ const Profile = () => {
                                     data={data}
                                     lang="en"
                                     locationLabel="Hà Nội"
-                                    unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
+                                    unitsLabels={{ temperature: '°C', windSpeed: 'Km/h' }}
                                     showForecast
                                 />
                             </Col>
@@ -229,7 +232,7 @@ const Profile = () => {
                                         name="file"
                                     />
                                 </Form.Item>
-                                <Form.Item>
+                                <Form.Item  style={{ display: 'flex', justifyContent: 'center' }}>
                                     <Button type="primary" htmlType="submit">
                                         Cập nhật
                                     </Button>

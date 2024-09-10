@@ -28,6 +28,7 @@ import assetEventApi from "../../../apis/assetEventHistoryApi";
 import "./salesManagement.css";
 import assetCategoryApi from '../../../apis/assetCategoryApi';
 import assetManagementApi from '../../../apis/assetManagementApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -136,7 +137,7 @@ const SalesManagement = () => {
         };
     }
 
-   
+
 
     const handleFilter = async (name) => {
         try {
@@ -215,10 +216,12 @@ const SalesManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
-                            <Breadcrumb.Item href="">
+                            <Breadcrumb.Item>
                                 <ShoppingOutlined />
                                 <span>Quản lý mua bán tài sản</span>
                             </Breadcrumb.Item>

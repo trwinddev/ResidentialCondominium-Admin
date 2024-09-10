@@ -29,6 +29,7 @@ import maintenanceHistoryApi from "../../../apis/maintenanceHistoryApi";
 import "./maintenanceHistory.css";
 import assetManagementApi from '../../../apis/assetManagementApi';
 import maintenancePlansApi from '../../../apis/maintenancePlansApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -296,8 +297,10 @@ const MaintenanceHistory = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

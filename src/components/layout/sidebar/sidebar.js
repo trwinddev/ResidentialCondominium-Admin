@@ -1,4 +1,4 @@
-import { FileDoneOutlined, RedoOutlined, ExportOutlined, AuditOutlined, AppstoreOutlined, FolderOpenOutlined, FileTextOutlined, CarryOutOutlined, CalendarOutlined, BookOutlined, BlockOutlined, DashboardOutlined, ShoppingOutlined, CommentOutlined, CloudSyncOutlined, AlertOutlined, FileOutlined, BarcodeOutlined, PicLeftOutlined, BorderLeftOutlined, UserOutlined, ContainerOutlined } from '@ant-design/icons';
+import { FileDoneOutlined, RedoOutlined, ExportOutlined, AuditOutlined, AppstoreOutlined, FolderOpenOutlined, FileTextOutlined, CarryOutOutlined, CalendarOutlined, BookOutlined, BlockOutlined, DashboardOutlined, ShoppingOutlined, CommentOutlined, CloudSyncOutlined, AlertOutlined, FileOutlined, BarcodeOutlined, PicLeftOutlined, BorderLeftOutlined, UserOutlined, ContainerOutlined, HomeOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from "react-router-dom";
@@ -15,9 +15,9 @@ function Sidebar() {
   const menuSidebarAdmin = [
     {
       key: "dash-board",
-      title: "Dashboards",
+      title: "Trang chủ",
       link: "/dash-board",
-      icon: <DashboardOutlined />
+      icon: <HomeOutlined />
     },
     {
       key: "account-management",

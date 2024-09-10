@@ -27,6 +27,7 @@ import "./residentManagement.css";
 import dayjs from 'dayjs';
 import moment from 'moment';
 import userApi from '../../../apis/userApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -303,8 +304,10 @@ const ResidentManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

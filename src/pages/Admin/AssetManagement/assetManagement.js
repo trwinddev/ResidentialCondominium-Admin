@@ -27,6 +27,7 @@ import assetManagementApi from "../../../apis/assetManagementApi";
 import "./assetManagement.css";
 import assetCategoryApi from '../../../apis/assetCategoryApi';
 import uploadFileApi from '../../../apis/uploadFileApi';
+import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
@@ -115,7 +116,7 @@ const AssetManagement = () => {
                      setLoading(false);
                      return;
                  }
-                
+
                 if (response === undefined) {
                     notification["error"]({
                         message: `Thông báo`,
@@ -398,8 +399,10 @@ const AssetManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

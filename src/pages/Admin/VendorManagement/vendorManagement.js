@@ -24,6 +24,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import vendorManagementApi from "../../../apis/vendorManagementApi";
 import "./vendorManagement.css";
+import { Link } from 'react-router-dom';
 
 const VendorManagement = () => {
 
@@ -50,7 +51,7 @@ const VendorManagement = () => {
                 "phone": values.phone,
                 "address": values.address,
             };
-            
+
             return vendorManagementApi.createVendor(categoryList).then(response => {
                 if (response === undefined) {
                     notification["error"]({
@@ -84,7 +85,7 @@ const VendorManagement = () => {
                 "phone": values.phone,
                 "address": values.address,
             };
-            
+
             return vendorManagementApi.updateVendor(categoryList, id).then(response => {
                 if (response === undefined) {
                     notification["error"]({
@@ -183,7 +184,7 @@ const VendorManagement = () => {
                     phone: response.data.phone,
                     address: response.data.address,
                 });
-                
+
                 console.log(form2);
                 setLoading(false);
             } catch (error) {
@@ -291,8 +292,10 @@ const VendorManagement = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
-                            <Breadcrumb.Item href="">
-                                <HomeOutlined />
+                            <Breadcrumb.Item>
+                                <Link to="/dash-board">
+                                    <HomeOutlined />
+                                </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
                                 <ShoppingOutlined />

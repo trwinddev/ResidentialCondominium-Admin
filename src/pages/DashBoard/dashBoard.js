@@ -98,12 +98,12 @@ const DashBoard = () => {
                 <div className='container'>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
+                            {/* <Breadcrumb.Item href="">
+                                <HomeOutlined />
+                            </Breadcrumb.Item> */}
                             <Breadcrumb.Item href="">
                                 <HomeOutlined />
-                            </Breadcrumb.Item>
-                            <Breadcrumb.Item href="">
-                                <DashboardOutlined />
-                                <span>DashBoard</span>
+                                <span>Trang chủ</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
