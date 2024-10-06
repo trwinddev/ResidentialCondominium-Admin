@@ -46,6 +46,7 @@ const ComplaintManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -261,7 +262,7 @@ const ComplaintManagement = () => {
             key: 'assigned_to',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -341,7 +342,7 @@ const ComplaintManagement = () => {
             key: 'assigned_to',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => {
                 const isCompleted = record.status === 'Đã xong';
@@ -468,7 +469,7 @@ const ComplaintManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -483,7 +484,8 @@ const ComplaintManagement = () => {
                                         <Row justify="end">
                                             <Space>
                                                 <Select
-                                                    style={{ width: 120, marginRight: 10 }}
+                                                    placeholder="Lọc theo quyền hạn"
+                                                    style={{ width: 200, marginRight: 10 }}
                                                     onChange={(value) => {
                                                         handleFilter2(value);
                                                     }}
@@ -515,7 +517,7 @@ const ComplaintManagement = () => {
                 </div>
 
                 <Modal
-                    title="Tạo khiếu nại mới"
+                    title="Tạo khiếu nại"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -551,7 +553,7 @@ const ComplaintManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người khiếu nại!',
+                                    message: 'Vui lòng chọn người khiếu nại',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -570,7 +572,7 @@ const ComplaintManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập chủ đề!',
+                                    message: 'Vui lòng nhập chủ đề',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -583,7 +585,7 @@ const ComplaintManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -676,7 +678,7 @@ const ComplaintManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái!',
+                                    message: 'Vui lòng chọn trạng thái',
                                 },
                             ]}
                             style={{ marginBottom: 10, display: userData?.role === 'isAdmin' ? 'block' : 'none' }}
@@ -690,11 +692,11 @@ const ComplaintManagement = () => {
 
                         <Form.Item
                             name="assigned_to"
-                            label="Người đảm nhiệm!"
+                            label="Người đảm nhiệm"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người đảm nhiệm!!',
+                                    message: 'Vui lòng chọn người đảm nhiệm',
                                 },
                             ]}
                             style={{ marginBottom: 10, display: userData?.role === 'isAdmin' ? 'block' : 'none' }}

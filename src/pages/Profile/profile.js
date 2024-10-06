@@ -29,6 +29,12 @@ const Profile = () => {
     const [userData, setUserData] = useState([]);
     const [isVisibleModal, setVisibleModal] = useState(false);
     const [file, setUploadFile] = useState();
+    const [form] = Form.useForm();
+
+    const handleCancel = () => {
+        form.resetFields();
+        setVisibleModal(false);
+    };
 
     const { data, isLoading, errorMessage } = useOpenWeather({
         key: '03b81b9c18944e6495d890b189357388',
@@ -172,10 +178,11 @@ const Profile = () => {
                     <Modal
                         title="Cập nhật thông tin cá nhân"
                         visible={isVisibleModal}
-                        onCancel={() => setVisibleModal(false)}
+                        onCancel={handleCancel}
                         footer={null}
                     >
                         <Form
+                            form={form}
                             initialValues={{
                                 username: userData?.username,
                                 email: userData?.email,

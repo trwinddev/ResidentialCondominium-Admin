@@ -47,6 +47,7 @@ const MaintenancePlanning = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -58,7 +59,7 @@ const MaintenancePlanning = () => {
             if (startDate && endDate && endDate.isBefore(startDate, 'day')) {
                 notification["error"]({
                     message: 'Lỗi',
-                    description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu!',
+                    description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu',
                 });
                 setLoading(false);
 
@@ -105,7 +106,7 @@ const MaintenancePlanning = () => {
             if (startDate && endDate && endDate.isBefore(startDate, 'day')) {
                 notification["error"]({
                     message: 'Lỗi',
-                    description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu!',
+                    description: 'Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu',
                 });
                 setLoading(false);
 
@@ -255,22 +256,22 @@ const MaintenancePlanning = () => {
             title: 'Ngày bắt đầu',
             dataIndex: 'start_date',
             key: 'start_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày kết thúc',
             dataIndex: 'end_date',
             key: 'end_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -349,7 +350,7 @@ const MaintenancePlanning = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -414,7 +415,7 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản!',
+                                    message: 'Vui lòng chọn tài sản',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -433,7 +434,7 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -446,12 +447,12 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày bắt đầu!',
+                                    message: 'Vui lòng chọn ngày bắt đầu',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="YYYY-MM-DD" />
+                            <DatePicker placeholder="Ngày bắt đầu" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="end_date"
@@ -459,12 +460,12 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày kết thúc!',
+                                    message: 'Vui lòng chọn ngày kết thúc',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="YYYY-MM-DD" />
+                            <DatePicker placeholder="Ngày kết thúc" format="DD-MM-YYYY" />
                         </Form.Item>
                     </Form>
                 </Modal>
@@ -506,7 +507,7 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản!',
+                                    message: 'Vui lòng chọn tài sản',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -525,7 +526,7 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -538,13 +539,13 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày bắt đầu!',
+                                    message: 'Vui lòng chọn ngày bắt đầu',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
                             <DatePicker
-                                format="YYYY-MM-DD"
+                                format="DD-MM-YYYY"
                                 disabledDate={(current) => current && current < moment().startOf('day')}
                             />
                         </Form.Item>
@@ -554,7 +555,7 @@ const MaintenancePlanning = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày kết thúc!',
+                                    message: 'Vui lòng chọn ngày kết thúc',
                                 },
                                 ({ getFieldValue }) => ({
                                     validator(_, value) {
@@ -562,14 +563,14 @@ const MaintenancePlanning = () => {
                                         if (!startDate || !value || moment(value).isSameOrAfter(startDate, 'day')) {
                                             return Promise.resolve();
                                         }
-                                        return Promise.reject('Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu!');
+                                        return Promise.reject('Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu');
                                     },
                                 }),
                             ]}
                             style={{ marginBottom: 10 }}
                         >
                             <DatePicker
-                                format="YYYY-MM-DD"
+                                format="DD-MM-YYYY"
                                 disabledDate={(current) => current && current < moment().startOf('day')}
                             />
                         </Form.Item>

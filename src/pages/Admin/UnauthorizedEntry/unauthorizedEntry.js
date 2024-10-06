@@ -47,6 +47,7 @@ const UnauthorizedEntry = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -218,13 +219,13 @@ const UnauthorizedEntry = () => {
             title: 'Thời gian vào',
             dataIndex: 'entry_time',
             key: 'entry_time',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Thời gian ra',
             dataIndex: 'exit_time',
             key: 'exit_time',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Tòa nhà',
@@ -248,10 +249,10 @@ const UnauthorizedEntry = () => {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -285,7 +286,7 @@ const UnauthorizedEntry = () => {
             ),
         },
     ];
-    
+
 
 
     useEffect(() => {
@@ -336,7 +337,7 @@ const UnauthorizedEntry = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -402,7 +403,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người ra vào!',
+                                    message: 'Vui lòng chọn người ra vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -422,7 +423,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập thời gian vào!',
+                                    message: 'Vui lòng nhập thời gian vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -436,7 +437,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập thời gian ra!',
+                                    message: 'Vui lòng nhập thời gian ra',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -450,7 +451,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tòa nhà!',
+                                    message: 'Vui lòng nhập tòa nhà',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -464,7 +465,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái ủy quyền!',
+                                    message: 'Vui lòng chọn trạng thái ủy quyền',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -478,7 +479,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên người lạ!',
+                                    message: 'Vui lòng nhập tên người lạ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -528,7 +529,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người ra vào!',
+                                    message: 'Vui lòng chọn người ra vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -548,7 +549,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập thời gian vào!',
+                                    message: 'Vui lòng nhập thời gian vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -562,7 +563,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập thời gian ra!',
+                                    message: 'Vui lòng nhập thời gian ra',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -576,7 +577,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tòa nhà!',
+                                    message: 'Vui lòng nhập tòa nhà',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -590,7 +591,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái ủy quyền!',
+                                    message: 'Vui lòng chọn trạng thái ủy quyền',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -604,7 +605,7 @@ const UnauthorizedEntry = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên người lạ!',
+                                    message: 'Vui lòng nhập tên người lạ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

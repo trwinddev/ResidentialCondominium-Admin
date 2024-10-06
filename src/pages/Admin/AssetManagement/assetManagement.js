@@ -45,6 +45,7 @@ const AssetManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -287,13 +288,13 @@ const AssetManagement = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày cập nhật',
             key: 'updated_at',
             dataIndex: 'updated_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Số lượng',
@@ -301,7 +302,7 @@ const AssetManagement = () => {
             dataIndex: 'quantity',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -415,7 +416,7 @@ const AssetManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -431,7 +432,7 @@ const AssetManagement = () => {
                                             <Space>
                                                 <Select
                                                     placeholder="Lọc theo danh mục"
-                                                    style={{ width: 150, marginRight: 10 }}
+                                                    style={{ width: 200, marginRight: 10 }}
                                                     onChange={(value) => {
                                                         setSelectedCategory(value);
                                                         handleFilter2(value);
@@ -461,7 +462,7 @@ const AssetManagement = () => {
                 </div>
 
                 <Modal
-                    title="Tạo tài sản mới"
+                    title="Tạo tài sản"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -498,7 +499,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập tên!',
+                                        message: 'Vui lòng nhập tên',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -511,7 +512,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập mô tả!',
+                                        message: 'Vui lòng nhập mô tả',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -525,7 +526,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập giá trị!',
+                                        message: 'Vui lòng nhập giá trị',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -544,7 +545,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập vị trí!',
+                                        message: 'Vui lòng nhập vị trí',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -558,7 +559,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn trạng thái!',
+                                        message: 'Vui lòng chọn trạng thái',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -576,7 +577,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn danh mục!',
+                                        message: 'Vui lòng chọn danh mục',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -596,7 +597,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn ảnh!',
+                                        message: 'Vui lòng chọn ảnh',
                                     },
                                 ]}
                             >
@@ -649,7 +650,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your sender name!',
+                                        message: 'Vui lòng nhập tên',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -662,7 +663,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Please input your subject!',
+                                        message: 'Vui lòng nhập mô tả',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -676,7 +677,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập giá trị!',
+                                        message: 'Vui lòng nhập giá trị',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -695,7 +696,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập vị trí!',
+                                        message: 'Vui lòng nhập vị trí',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -709,7 +710,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn trạng thái!',
+                                        message: 'Vui lòng chọn trạng thái',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -727,7 +728,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn danh mục!',
+                                        message: 'Vui lòng chọn danh mục',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -747,7 +748,7 @@ const AssetManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập số lượng!',
+                                        message: 'Vui lòng nhập số lượng',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}

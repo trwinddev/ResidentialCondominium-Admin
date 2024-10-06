@@ -45,6 +45,7 @@ const AssetCards = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -238,16 +239,16 @@ const AssetCards = () => {
             title: 'Ngày cấp thẻ',
             dataIndex: 'issue_date',
             key: 'issue_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày hết hạn',
             dataIndex: 'expiration_date',
             key: 'expiration_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -328,7 +329,7 @@ const AssetCards = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">

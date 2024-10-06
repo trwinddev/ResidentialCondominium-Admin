@@ -42,6 +42,7 @@ const Visitors = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -222,7 +223,7 @@ const Visitors = () => {
             title: 'Ngày vào',
             dataIndex: 'entryDate',
             key: 'entryDate',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Lý do đến',
@@ -230,7 +231,7 @@ const Visitors = () => {
             key: 'reasonToVisit',
         },
         {
-            title: 'Note',
+            title: 'Số CMND',
             dataIndex: 'citizenId',
             key: 'citizenId',
         },
@@ -238,10 +239,10 @@ const Visitors = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -314,7 +315,7 @@ const Visitors = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -344,7 +345,7 @@ const Visitors = () => {
                 </div>
 
                 <Modal
-                    title="Tạo khách hàng mới"
+                    title="Tạo khách hàng"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -379,7 +380,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -392,11 +393,11 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -409,7 +410,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -426,12 +427,12 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn ngày vào!',
+                                    message: 'Vui lòng chọn ngày vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày vào" />
+                            <DatePicker placeholder="Ngày vào" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="reasonToVisit"
@@ -439,7 +440,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập lý do đến!',
+                                    message: 'Vui lòng nhập lý do đến',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -448,16 +449,16 @@ const Visitors = () => {
                         </Form.Item>
                         <Form.Item
                             name="citizenId"
-                            label="Note"
+                            label="Số CMND"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số note!',
+                                    message: 'Vui lòng nhập số CMND',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Note" />
+                            <Input placeholder="Số CMND" />
                         </Form.Item>
 
                     </Form>
@@ -499,7 +500,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -512,7 +513,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -525,7 +526,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -542,12 +543,12 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn ngày vào!',
+                                    message: 'Vui lòng chọn ngày vào',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày vào" />
+                            <DatePicker placeholder="Ngày vào" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="reasonToVisit"
@@ -555,7 +556,7 @@ const Visitors = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập lý do đến!',
+                                    message: 'Vui lòng nhập lý do đến',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -564,16 +565,16 @@ const Visitors = () => {
                         </Form.Item>
                         <Form.Item
                             name="citizenId"
-                            label="Note"
+                            label="Số CMND"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập note!',
+                                    message: 'Vui lòng nhập số CMND',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Note" />
+                            <Input placeholder="Số CMND" />
                         </Form.Item>
 
                     </Form>

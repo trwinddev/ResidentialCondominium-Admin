@@ -32,12 +32,12 @@
 }
 
 #account{
-    background-color: #ececec;  
+    background-color: #ececec;
     box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;  
+    background-attachment: fixed;
     margin: 18px 20px 24px 5px;
     border: 0 none;
     overflow: hidden;
@@ -56,4 +56,8 @@
 
 .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link{
     border-radius: 10px;
+}
+
+.ant-page-header-content {
+    padding-block-start: 0px;
 }

@@ -45,6 +45,7 @@ const Visitors = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -108,19 +109,19 @@ const Visitors = () => {
             title: 'Ngày bắt đầu',
             dataIndex: 'start_date',
             key: 'start_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày kết thúc',
             dataIndex: 'end_date',
             key: 'end_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
     ];
 
@@ -164,7 +165,7 @@ const Visitors = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -224,7 +225,7 @@ const Visitors = () => {
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Vui lòng nhập tiêu đề!',
+                                            message: 'Vui lòng nhập tiêu đề',
                                         },
                                     ]}
                                     style={{ marginBottom: 10 }}
@@ -237,7 +238,7 @@ const Visitors = () => {
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Vui lòng nhập nội dung!',
+                                            message: 'Vui lòng nhập nội dung',
                                         },
                                     ]}
                                     style={{ marginBottom: 10 }}
@@ -250,7 +251,7 @@ const Visitors = () => {
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Vui lòng nhập vai trò!',
+                                            message: 'Vui lòng chọn vai trò',
                                         },
                                     ]}
                                     style={{ marginBottom: 10 }}

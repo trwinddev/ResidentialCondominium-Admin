@@ -40,6 +40,7 @@ const VendorManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -232,10 +233,10 @@ const VendorManagement = () => {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -308,7 +309,7 @@ const VendorManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -338,7 +339,7 @@ const VendorManagement = () => {
                 </div>
 
                 <Modal
-                    title="Tạo nhà cung cấp mới"
+                    title="Tạo nhà cung cấp"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -373,7 +374,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -386,11 +387,11 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -403,7 +404,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -420,7 +421,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập địa chỉ!',
+                                    message: 'Vui lòng nhập địa chỉ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -467,7 +468,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -480,11 +481,11 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -497,7 +498,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -514,7 +515,7 @@ const VendorManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập địa chỉ!',
+                                    message: 'Vui lòng nhập địa chỉ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

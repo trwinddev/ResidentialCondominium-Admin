@@ -44,6 +44,7 @@ const ReceptionManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -209,7 +210,7 @@ const ReceptionManagement = () => {
             key: 'resident_username',
         },
         {
-            title: 'Tên Khách',
+            title: 'Tên khách',
             dataIndex: 'guest_name',
             key: 'guest_name',
         },
@@ -217,7 +218,7 @@ const ReceptionManagement = () => {
             title: 'Ngày Nhập',
             dataIndex: 'entry_date',
             key: 'entry_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Mục Đích',
@@ -277,7 +278,7 @@ const ReceptionManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -359,16 +360,16 @@ const ReceptionManagement = () => {
 
                         <Form.Item
                             name="guest_name"
-                            label="Tên Khách"
+                            label="Tên khách"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Tên Khách!',
+                                    message: 'Vui lòng nhập tên khách',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên Khách" />
+                            <Input placeholder="Tên khách" />
                         </Form.Item>
 
                         <Form.Item
@@ -377,12 +378,12 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Ngày Nhập!',
+                                    message: 'Vui lòng nhập ngày nhập',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker style={{ width: '100%' }} placeholder="Chọn Ngày Nhập" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Chọn ngày nhập" />
                         </Form.Item>
 
                         <Form.Item
@@ -391,12 +392,12 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Mục Đích!',
+                                    message: 'Vui lòng nhập mục đích',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mục Đích" />
+                            <Input placeholder="Mục đích" />
                         </Form.Item>
 
                         <Form.Item
@@ -405,7 +406,7 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Ghi Chú!',
+                                    message: 'Vui lòng nhập ghi chú',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -455,7 +456,7 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn cư dân!',
+                                    message: 'Vui lòng chọn cư dân',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -471,16 +472,16 @@ const ReceptionManagement = () => {
 
                         <Form.Item
                             name="guest_name"
-                            label="Tên Khách"
+                            label="Tên khách"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Tên Khách!',
+                                    message: 'Vui lòng nhập tên khách',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên Khách" />
+                            <Input placeholder="Tên khách" />
                         </Form.Item>
 
                         <Form.Item
@@ -489,7 +490,7 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Ngày Nhập!',
+                                    message: 'Vui lòng nhập ngày nhập',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -503,7 +504,7 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Mục Đích!',
+                                    message: 'Vui lòng nhập mục đích',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -517,7 +518,7 @@ const ReceptionManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập Ghi Chú!',
+                                    message: 'Vui lòng nhập ghi chú',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

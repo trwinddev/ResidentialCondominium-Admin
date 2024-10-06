@@ -40,6 +40,7 @@ const RecordResidentEvents = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -131,10 +132,10 @@ const RecordResidentEvents = () => {
             title: 'Ngày tổ chức',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -191,7 +192,7 @@ const RecordResidentEvents = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -221,7 +222,7 @@ const RecordResidentEvents = () => {
                 </div>
 
                 <Modal
-                    title="Tạo sự kiện cư dân mới"
+                    title="Tạo sự kiện cư dân"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -256,7 +257,7 @@ const RecordResidentEvents = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -269,12 +270,12 @@ const RecordResidentEvents = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày!',
+                                    message: 'Vui lòng chọn ngày tổ chức',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
+                            <DatePicker showTime format="DD-MM-YYYY HH:mm:ss" placeholder="Ngày tổ chức" />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -282,7 +283,7 @@ const RecordResidentEvents = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -295,7 +296,7 @@ const RecordResidentEvents = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập địa điểm!',
+                                    message: 'Vui lòng nhập địa điểm',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

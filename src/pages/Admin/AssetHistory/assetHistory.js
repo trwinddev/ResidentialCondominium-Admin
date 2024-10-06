@@ -53,20 +53,20 @@ const AssetHistory = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày cập nhật',
             key: 'updated_at',
             dataIndex: 'updated_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Số lượng',
             key: 'quantity',
             dataIndex: 'quantity',
         },
-     
+
     ];
 
 
@@ -104,7 +104,7 @@ const AssetHistory = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">

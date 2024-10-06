@@ -47,6 +47,7 @@ const MaintenanceHistory = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -231,10 +232,10 @@ const MaintenanceHistory = () => {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -313,7 +314,7 @@ const MaintenanceHistory = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -343,7 +344,7 @@ const MaintenanceHistory = () => {
                 </div>
 
                 <Modal
-                    title="Tạo lịch sử bảo trì mới"
+                    title="Tạo lịch sử bảo trì"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -378,7 +379,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn kế hoạch bảo trì!',
+                                    message: 'Vui lòng chọn kế hoạch bảo trì',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -397,7 +398,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -410,12 +411,12 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày bảo trì!',
+                                    message: 'Vui lòng chọn ngày bảo trì',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="YYYY-MM-DD" />
+                            <DatePicker placeholder="Ngày bảo trì" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="cost"
@@ -423,7 +424,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập chi phí!',
+                                    message: 'Vui lòng nhập chi phí',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -476,7 +477,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn kế hoạch bảo trì!',
+                                    message: 'Vui lòng chọn kế hoạch bảo trì',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -495,7 +496,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -508,12 +509,12 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày bảo trì!',
+                                    message: 'Vui lòng chọn ngày bảo trì',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="YYYY-MM-DD" />
+                            <DatePicker format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="cost"
@@ -521,7 +522,7 @@ const MaintenanceHistory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập chi phí!',
+                                    message: 'Vui lòng nhập chi phí',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

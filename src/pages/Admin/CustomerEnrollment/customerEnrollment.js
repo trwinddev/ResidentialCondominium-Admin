@@ -41,6 +41,7 @@ const CustomerEnrollment = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -225,7 +226,7 @@ const CustomerEnrollment = () => {
             key: 'note',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -300,7 +301,7 @@ const CustomerEnrollment = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -365,7 +366,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -378,11 +379,11 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -395,7 +396,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -412,7 +413,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập địa chỉ!',
+                                    message: 'Vui lòng nhập địa chỉ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -425,7 +426,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ghi chú!',
+                                    message: 'Vui lòng nhập ghi chú',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -471,7 +472,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -484,11 +485,11 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -501,7 +502,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -518,7 +519,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập địa chỉ!',
+                                    message: 'Vui lòng nhập địa chỉ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -531,7 +532,7 @@ const CustomerEnrollment = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ghi chú!',
+                                    message: 'Vui lòng nhập ghi chú',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

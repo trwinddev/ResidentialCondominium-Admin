@@ -17,6 +17,7 @@ import {
     Space,
     Spin,
     Table,
+    Card,
     notification
 } from 'antd';
 import moment from 'moment';
@@ -40,6 +41,7 @@ const AssetCategory = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -232,10 +234,10 @@ const AssetCategory = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -306,7 +308,7 @@ const AssetCategory = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -330,13 +332,15 @@ const AssetCategory = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 24 }}>
+                        <Card title="Danh mục tài sản" bordered={false} >
+                                <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                        </Card>
                     </div>
                 </div>
 
                 <Modal
-                    title="Tạo danh mục tài sản mới"
+                    title="Tạo danh mục tài sản"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -371,7 +375,7 @@ const AssetCategory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -384,7 +388,7 @@ const AssetCategory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -431,7 +435,7 @@ const AssetCategory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your sender name!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -444,7 +448,7 @@ const AssetCategory = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your subject!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

@@ -47,6 +47,7 @@ const ContractManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -251,14 +252,14 @@ const ContractManagement = () => {
             title: 'Ngày bắt đầu',
             dataIndex: 'start_date',
             key: 'start_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
 
         },
         {
             title: 'Ngày kết thúc',
             dataIndex: 'end_date',
             key: 'end_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
 
         },
         {
@@ -287,7 +288,7 @@ const ContractManagement = () => {
             },
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -374,7 +375,7 @@ const ContractManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -404,7 +405,7 @@ const ContractManagement = () => {
                 </div>
 
                 <Modal
-                    title="Tạo hợp đồng mới"
+                    title="Tạo hợp đồng"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -440,7 +441,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn nhà cung cấp!',
+                                        message: 'Vui lòng chọn nhà cung cấp',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -459,7 +460,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập tiêu đề!',
+                                        message: 'Vui lòng nhập tiêu đề',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -472,7 +473,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày bắt đầu!',
+                                        message: 'Vui lòng chọn ngày bắt đầu',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -485,7 +486,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày kết thúc!',
+                                        message: 'Vui lòng chọn ngày kết thúc',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -498,7 +499,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập mô tả!',
+                                        message: 'Vui lòng nhập mô tả',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -511,7 +512,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập giá trị!',
+                                        message: 'Vui lòng nhập giá trị',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -530,7 +531,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng đính kèm!',
+                                        message: 'Vui lòng chọn đính kèm',
                                     },
                                 ]}
                             >
@@ -583,7 +584,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn nhà cung cấp!',
+                                        message: 'Vui lòng chọn nhà cung cấp',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -602,7 +603,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập tiêu đề!',
+                                        message: 'Vui lòng nhập tiêu đề',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -615,7 +616,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày bắt đầu!',
+                                        message: 'Vui lòng chọn ngày bắt đầu',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -628,7 +629,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày kết thúc!',
+                                        message: 'Vui lòng chọn ngày kết thúc',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -641,7 +642,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập mô tả!',
+                                        message: 'Vui lòng nhập mô tả',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -654,7 +655,7 @@ const ContractManagement = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập giá trị!',
+                                        message: 'Vui lòng nhập giá trị',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}

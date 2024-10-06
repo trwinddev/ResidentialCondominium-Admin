@@ -44,6 +44,7 @@ const RoomManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -327,7 +328,7 @@ const RoomManagement = () => {
             ),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -466,7 +467,7 @@ const RoomManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -481,8 +482,8 @@ const RoomManagement = () => {
                                         <Row justify="end">
                                             <Space>
                                                 <Select
-                                                    placeholder="Lọc theo danh mục"
-                                                    style={{ width: 150, marginRight: 10 }}
+                                                    placeholder="Lọc theo trạng thái"
+                                                    style={{ width: 200, marginRight: 10 }}
                                                     onChange={(value) => {
                                                         setSelectedCategory(value);
                                                         handleFilter2(value);
@@ -544,7 +545,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn cư dân!',
+                                    message: 'Vui lòng chọn cư dân',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -562,7 +563,7 @@ const RoomManagement = () => {
                 </Modal>
 
                 <Modal
-                    title="Tạo phòng mới"
+                    title="Tạo phòng"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -597,7 +598,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -610,7 +611,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn loại phòng!',
+                                    message: 'Vui lòng chọn loại phòng',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -629,7 +630,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập diện tích!',
+                                    message: 'Vui lòng nhập diện tích',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -644,7 +645,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập sức chứa!',
+                                    message: 'Vui lòng nhập sức chứa',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -657,7 +658,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái!',
+                                    message: 'Vui lòng chọn trạng thái',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -673,7 +674,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -720,7 +721,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -733,7 +734,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập loại!',
+                                    message: 'Vui lòng nhập loại',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -746,7 +747,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập diện tích!',
+                                    message: 'Vui lòng nhập diện tích',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -761,7 +762,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập sức chứa!',
+                                    message: 'Vui lòng nhập sức chứa',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -774,7 +775,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái!',
+                                    message: 'Vui lòng chọn trạng thái',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -790,7 +791,7 @@ const RoomManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

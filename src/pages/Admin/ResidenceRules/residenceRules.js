@@ -39,6 +39,7 @@ const ResidenceRules = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -162,11 +163,11 @@ const ResidenceRules = () => {
                 const response = await residenceRulesApi.getDetailResidenceRule(id);
                 console.log(response);
                 setId(id);
-                form2.setFieldsValue({
+                form.setFieldsValue({
                     title: response.title,
                     content: response.content,
                 });
-                console.log(form2);
+                console.log(form);
                 setLoading(false);
             } catch (error) {
                 throw error;
@@ -200,7 +201,7 @@ const ResidenceRules = () => {
             key: 'content',
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -270,7 +271,7 @@ const ResidenceRules = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -300,7 +301,7 @@ const ResidenceRules = () => {
                 </div>
 
                 <Modal
-                    title="Tạo quy định cư dân mới"
+                    title="Tạo quy định cư dân"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -335,7 +336,7 @@ const ResidenceRules = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tiêu đề!',
+                                    message: 'Vui lòng nhập tiêu đề',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -348,7 +349,7 @@ const ResidenceRules = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập nội dung!',
+                                    message: 'Vui lòng nhập nội dung',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -364,10 +365,10 @@ const ResidenceRules = () => {
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {
-                        form2
+                        form
                             .validateFields()
                             .then((values) => {
-                                form2.resetFields();
+                                form.resetFields();
                                 handleUpdateCategory(values);
                             })
                             .catch((info) => {
@@ -396,7 +397,7 @@ const ResidenceRules = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tiêu đề!',
+                                    message: 'Vui lòng nhập tiêu đề',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -409,7 +410,7 @@ const ResidenceRules = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập nội dung!',
+                                    message: 'Vui lòng nhập nội dung',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

@@ -47,6 +47,7 @@ const SalesManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -86,7 +87,7 @@ const SalesManagement = () => {
                         notification["error"]({
                             message: `Thông báo`,
                             description:
-                                'Số lượng tài sản không đủ để bán!',
+                                'Số lượng tài sản không đủ để bán',
                         });
                         setLoading(false);
                         return;
@@ -174,13 +175,13 @@ const SalesManagement = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày cập nhật',
             key: 'updated_at',
             dataIndex: 'updated_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Số lượng',
@@ -232,7 +233,7 @@ const SalesManagement = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -297,7 +298,7 @@ const SalesManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản!',
+                                    message: 'Vui lòng chọn tài sản',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -316,7 +317,7 @@ const SalesManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn loại sự kiện!',
+                                    message: 'Vui lòng chọn loại sự kiện',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -332,12 +333,12 @@ const SalesManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập ngày sự kiện!',
+                                    message: 'Vui lòng chọn ngày sự kiện',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="YYYY-MM-DD" />
+                            <DatePicker placeholder="Ngày sự kiện" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -345,7 +346,7 @@ const SalesManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -358,7 +359,7 @@ const SalesManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số lượng!',
+                                    message: 'Vui lòng nhập số lượng',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

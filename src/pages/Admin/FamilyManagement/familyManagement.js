@@ -30,6 +30,7 @@ const FamilyManagement = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const columns = [

@@ -114,7 +114,7 @@ const AccountManagement = () => {
             ),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -122,8 +122,8 @@ const AccountManagement = () => {
                         {record.status !== "actived" ? <Popconfirm
                             title="Bạn muốn mở chặn tài khoản này?"
                             onConfirm={() => handleUnBanAccount(record)}
-                            okText="Yes"
-                            cancelText="No"
+                            okText="Có"
+                            cancelText="Không"
                         >
                             <Button
                                 size="small"
@@ -134,8 +134,8 @@ const AccountManagement = () => {
                         </Popconfirm> : <Popconfirm
                             title="Bạn muốn chặn tài khoản này?"
                             onConfirm={() => handleBanAccount(record)}
-                            okText="Yes"
-                            cancelText="No"
+                            okText="Có"
+                            cancelText="Không"
                         >
                             <Button
                                 size="small"
@@ -248,10 +248,12 @@ const AccountManagement = () => {
 
     const showModal = () => {
         setIsModalVisible(true);
+        form.resetFields();
     };
 
     const handleCancel = () => {
         setIsModalVisible(false);
+        form.resetFields();
     };
 
     const accountCreate = async (values) => {
@@ -391,7 +393,7 @@ const AccountManagement = () => {
                     </div>
                 </div>
                 <Modal
-                    title="Thêm tài khoản"
+                    title="Tạo tài khoản"
                     visible={isModalVisible}
                     onCancel={handleCancel}
                     footer={null}
@@ -406,6 +408,7 @@ const AccountManagement = () => {
                             prefix: '86',
                         }}
                         scrollToFirstError
+                        autoComplete="off"
                     >
                         <Form.Item
                             name="name"
@@ -414,7 +417,7 @@ const AccountManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                                 { max: 100, message: 'Tên tối đa 100 ký tự' },
                                 { min: 5, message: 'Tên ít nhất 5 ký tự' },
@@ -432,16 +435,16 @@ const AccountManagement = () => {
                             rules={[
                                 {
                                     type: 'email',
-                                    message: 'Email không hợp lệ!',
+                                    message: 'Email không hợp lệ',
                                 },
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập email!',
+                                    message: 'Vui lòng nhập email',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Email" />
+                            <Input placeholder="Email" autoComplete="new-email" />
                         </Form.Item>
 
                         <Form.Item
@@ -451,7 +454,7 @@ const AccountManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập password!',
+                                    message: 'Vui lòng nhập mật khẩu',
                                 },
                                 { max: 20, message: 'Mật khẩu tối đa 20 ký tự' },
                                 { min: 6, message: 'Mật khẩu ít nhất 5 ký tự' },
@@ -459,7 +462,7 @@ const AccountManagement = () => {
                             }
                             style={{ marginBottom: 10 }}
                         >
-                            <Input.Password placeholder="Mật khẩu" />
+                            <Input.Password placeholder="Mật khẩu" autoComplete="new-password" />
                         </Form.Item>
 
                         <Form.Item
@@ -469,7 +472,7 @@ const AccountManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số điện thoại!',
+                                    message: 'Vui lòng nhập số điện thoại',
                                 },
                                 {
                                     pattern: /^[0-9]{10}$/,
@@ -489,7 +492,7 @@ const AccountManagement = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn phân quyền!',
+                                    message: 'Vui lòng chọn phân quyền',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

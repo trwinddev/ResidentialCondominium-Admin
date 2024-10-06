@@ -46,6 +46,7 @@ const AssetReport = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -182,7 +183,7 @@ const AssetReport = () => {
             title: 'Ngày tạo',
             key: 'created_at',
             dataIndex: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
     ];
 
@@ -230,7 +231,7 @@ const AssetReport = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -296,7 +297,7 @@ const AssetReport = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn tài sản!',
+                                        message: 'Vui lòng chọn tài sản',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -315,12 +316,12 @@ const AssetReport = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày báo cáo!',
+                                        message: 'Vui lòng chọn ngày báo cáo',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
                             >
-                                <DatePicker placeholder="Chọn ngày báo cáo" />
+                                <DatePicker placeholder="Ngày báo cáo" format="DD-MM-YYYY" />
                             </Form.Item>
                             <Form.Item
                                 name="report_description"
@@ -328,7 +329,7 @@ const AssetReport = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập mô tả báo cáo!',
+                                        message: 'Vui lòng nhập mô tả báo cáo',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -342,7 +343,7 @@ const AssetReport = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng đính kèm!',
+                                        message: 'Vui lòng chọn đính kèm',
                                     },
                                 ]}
                             >
@@ -395,7 +396,7 @@ const AssetReport = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your sender name!',
+                                    message: 'Vui lòng nhập tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -408,7 +409,7 @@ const AssetReport = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your subject!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

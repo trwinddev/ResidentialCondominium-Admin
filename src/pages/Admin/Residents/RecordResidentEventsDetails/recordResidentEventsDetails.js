@@ -38,6 +38,7 @@ const RecordResidentEventsDetails = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -127,7 +128,7 @@ const RecordResidentEventsDetails = () => {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'File đính kèm',
@@ -185,7 +186,7 @@ const RecordResidentEventsDetails = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -215,7 +216,7 @@ const RecordResidentEventsDetails = () => {
                 </div>
 
                 <Modal
-                    title="Tạo báo cáo cuộc họp mới"
+                    title="Tạo báo cáo cuộc họp"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -247,7 +248,7 @@ const RecordResidentEventsDetails = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn cuộc họp!',
+                                        message: 'Vui lòng nhập báo cáo cuộc họp',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -260,12 +261,12 @@ const RecordResidentEventsDetails = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập ngày sự kiện!',
+                                        message: 'Vui lòng chọn ngày viết báo cáo',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
                             >
-                                <DatePicker format="YYYY-MM-DD" />
+                                <DatePicker format="DD-MM-YYYY" placeholder="Ngày viết báo cáo" />
                             </Form.Item>
                             <Form.Item
                                 name="description"
@@ -273,7 +274,7 @@ const RecordResidentEventsDetails = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng nhập mô tả sự kiện!',
+                                        message: 'Vui lòng nhập mô tả',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
@@ -286,7 +287,7 @@ const RecordResidentEventsDetails = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng đính kèm!',
+                                        message: 'Vui lòng chọn đính kèm',
                                     },
                                 ]}
                             >

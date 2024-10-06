@@ -49,6 +49,7 @@ const EmergencyMaintenance = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -231,7 +232,7 @@ const EmergencyMaintenance = () => {
             title: 'Ngày báo cáo',
             dataIndex: 'reported_at',
             key: 'reported_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Trạng thái',
@@ -242,7 +243,7 @@ const EmergencyMaintenance = () => {
             title: 'Ngày giải quyết',
             dataIndex: 'resolved_at',
             key: 'resolved_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Mô tả giải quyết',
@@ -258,10 +259,10 @@ const EmergencyMaintenance = () => {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
             key: 'created_at',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -360,7 +361,7 @@ const EmergencyMaintenance = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -390,7 +391,7 @@ const EmergencyMaintenance = () => {
                 </div>
 
                 <Modal
-                    title="Tạo vấn đề khẩn cấp mới"
+                    title="Tạo vấn đề khẩn cấp"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -426,7 +427,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản!',
+                                    message: 'Vui lòng chọn tài sản',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -446,7 +447,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -460,7 +461,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người báo cáo!',
+                                    message: 'Vui lòng chọn người báo cáo',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -515,7 +516,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản!',
+                                    message: 'Vui lòng chọn tài sản',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -535,7 +536,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -549,7 +550,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người báo cáo!',
+                                    message: 'Vui lòng chọn người báo cáo',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -569,7 +570,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn người giải quyết!',
+                                    message: 'Vui lòng chọn người giải quyết',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -589,7 +590,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn trạng thái!',
+                                    message: 'Vui lòng chọn trạng thái',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -607,7 +608,7 @@ const EmergencyMaintenance = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Chi tiết giải quyết!',
+                                    message: 'Vui lòng nhập chi tiết giải quyết',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}

@@ -9,7 +9,7 @@ function _Footer(){
         <Footer style={{
             marginLeft: 230,
             textAlign: 'center'}}>
-            Copyright@ 2023 Created by team CondoOperationsManagement
+            Copyright© 2024 Created by TrWind
         </Footer>
     );
 }

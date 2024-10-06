@@ -82,3 +82,7 @@
 .ant-pagination-next .ant-pagination-item-link {
     border-radius: 10px;
 }
+
+.ant-page-header-content {
+    padding-block-start: 0px;
+}

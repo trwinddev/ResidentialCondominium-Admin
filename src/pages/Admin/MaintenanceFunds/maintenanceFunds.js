@@ -45,6 +45,7 @@ const MaintenanceFunds = () => {
 
     const showModal = () => {
         setOpenModalCreate(true);
+        form.resetFields();
     };
 
     const handleOkUser = async (values) => {
@@ -221,16 +222,16 @@ const MaintenanceFunds = () => {
             title: 'Ngày phân bổ',
             dataIndex: 'allocation_date',
             key: 'allocation_date',
-            render: (text) => moment(text).format('YYYY-MM-DD'),
+            render: (text) => moment(text).format('DD-MM-YYYY'),
         },
         {
             title: 'Ngày sử dụng',
             dataIndex: 'utilization_date',
             key: 'utilization_date',
-            render: (text) => (text ? moment(text).format('YYYY-MM-DD') : 'N/A'),
+            render: (text) => (text ? moment(text).format('DD-MM-YYYY') : 'N/A'),
         },
         {
-            title: 'Action',
+            title: 'Hành động',
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -304,7 +305,7 @@ const MaintenanceFunds = () => {
                         <div id="my__event_container__list">
                             <PageHeader
                                 subTitle=""
-                                style={{ fontSize: 14 }}
+                                style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
@@ -334,7 +335,7 @@ const MaintenanceFunds = () => {
                 </div>
 
                 <Modal
-                    title="Tạo danh chi phí bảo trì mới"
+                    title="Tạo chi phí bảo trì"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -369,7 +370,7 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -382,7 +383,7 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số tiền!',
+                                    message: 'Vui lòng nhập số tiền',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -395,12 +396,12 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn ngày phân bổ!',
+                                    message: 'Vui lòng chọn ngày phân bổ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày phân bổ" />
+                            <DatePicker placeholder="Ngày phân bổ" format="DD-MM-YYYY" />
                         </Form.Item>
 
 
@@ -443,7 +444,7 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mô tả!',
+                                    message: 'Vui lòng nhập mô tả',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -456,7 +457,7 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập số tiền!',
+                                    message: 'Vui lòng nhập số tiền',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
@@ -469,12 +470,12 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn ngày phân bổ!',
+                                    message: 'Vui lòng chọn ngày phân bổ',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày phân bổ" />
+                            <DatePicker placeholder="Ngày phân bổ" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="utilization_date"
@@ -482,12 +483,12 @@ const MaintenanceFunds = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn ngày sử dụng!',
+                                    message: 'Vui lòng chọn ngày sử dụng',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày sử dụng" />
+                            <DatePicker placeholder="Ngày sử dụng" format="DD-MM-YYYY" />
                         </Form.Item>
 
                     </Form>
