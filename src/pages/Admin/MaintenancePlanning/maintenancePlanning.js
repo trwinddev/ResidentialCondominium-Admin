@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    BorderLeftOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -19,7 +19,8 @@ import {
     Table,
     notification,
     DatePicker,
-    Select
+    Select,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -243,7 +244,7 @@ const MaintenancePlanning = () => {
             render: (text, record, index) => index + 1,
         },
         {
-            title: 'Tên tài sản',
+            title: 'Tên thiết bị',
             dataIndex: 'asset_name',
             key: 'asset_name',
         },
@@ -331,8 +332,8 @@ const MaintenancePlanning = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-maintenance-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -340,14 +341,14 @@ const MaintenancePlanning = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Kế hoạch bảo trì</span>
+                                <BorderLeftOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Kế hoạch bảo trì</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -355,7 +356,7 @@ const MaintenancePlanning = () => {
                                 <Row>
                                     <Col span="18">
                                         <Input
-                                            placeholder="Tìm kiếm theo tên tài sản"
+                                            placeholder="Tìm kiếm theo tên thiết bị"
                                             allowClear
                                             onChange={handleFilter}
                                             style={{ width: 300 }}
@@ -374,8 +375,15 @@ const MaintenancePlanning = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách kế hoạch bảo trì" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -411,17 +419,17 @@ const MaintenancePlanning = () => {
                     >
                         <Form.Item
                             name="asset_id"
-                            label="Tài sản"
+                            label="Thiết bị"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản',
+                                    message: 'Vui lòng chọn thiết bị',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn tài sản">
-                                {categoryList.map(category => (
+                            <Select placeholder="Chọn thiết bị">
+                                {categoryList?.map(category => (
                                     <Option key={category.id} value={category.id}>
                                         {category.name}
                                     </Option>
@@ -503,17 +511,17 @@ const MaintenancePlanning = () => {
                     >
                         <Form.Item
                             name="asset_id"
-                            label="Tài sản"
+                            label="Thiết bị"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản',
+                                    message: 'Vui lòng chọn thiết bị',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn tài sản">
-                                {categoryList.map(category => (
+                            <Select placeholder="Chọn thiết bị">
+                                {categoryList?.map(category => (
                                     <Option key={category.id} value={category.id}>
                                         {category.name}
                                     </Option>

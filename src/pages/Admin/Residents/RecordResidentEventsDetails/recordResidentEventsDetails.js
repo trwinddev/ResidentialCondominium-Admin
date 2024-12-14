@@ -16,7 +16,8 @@ import {
     Space,
     Spin,
     Table,
-    notification
+    notification,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -169,21 +170,21 @@ const RecordResidentEventsDetails = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div className=''>
+                    <div style={{ marginTop: 20 }} className='header-record-resident-events-details-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item href="">
                                 <HomeOutlined />
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Báo cáo cuộc họp</span>
+                                <ShoppingOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Báo cáo cuộc họp</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -210,8 +211,15 @@ const RecordResidentEventsDetails = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách báo cáo cuộc họp" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import userApi from "../../../apis/userApi";
 import MenuDropdown from "../../DropdownMenu/dropdownMenu";
 import "./header.css";
-
+import { Link } from 'react-router-dom';
 function Topbar() {
 
   const [notification, setNotification] = useState([]);
@@ -70,9 +70,9 @@ function Topbar() {
                 justify="center"
               >
                 <Col style={{ paddingLeft: 20 }}>
-                  <a href="#">
-                    {/* <img style={{ height: 60, width: 170 }} className="logo" alt="" src="https://i.ibb.co/k56rLRV/393165597-368988352388994-6454052415328874638-n.png" /> */}
-                  </a>
+                  <Link to="/dash-board">
+                    <img className="logo" alt="" src="https://barehome.com/cdn/shop/files/bare-logo-PNG-type_c86142f5-6b4b-4c7c-8086-018c639cf0a5.png?v=1720802636" />
+                  </Link>
                 </Col>
               </Row>
             </div>

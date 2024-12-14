@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    AuditOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -18,7 +18,8 @@ import {
     Spin,
     Select,
     notification,
-    DatePicker
+    DatePicker,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -35,6 +36,7 @@ const Visitors = () => {
     const [category, setCategory] = useState([]);
     const [openModalCreate, setOpenModalCreate] = useState(false);
     const [openModalUpdate, setOpenModalUpdate] = useState(false);
+    const [selectedInput, setSelectedInput] = useState();
     const [loading, setLoading] = useState(true);
     const [form] = Form.useForm();
     const [form2] = Form.useForm();
@@ -140,14 +142,23 @@ const Visitors = () => {
         })();
     }
 
+    const handleFilterName = async (name) => {
+        try {
+            const response = await userApi.searchNotificationByName(name);
+            setNewsList(response.data);
+        } catch (error) {
+            console.log('search to fetch notification list:' + error);
+        }
+    }
+
     useEffect(() => {
         handleList();
     }, [])
     return (
         <div>
             <Spin spinning={false}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div className=''>
+                    <div style={{ marginTop: 20 }} className='header-notification-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -155,21 +166,27 @@ const Visitors = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Gửi thông báo</span>
+                                <AuditOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý thông báo</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
                             >
                                 <Row>
                                     <Col span="18">
-
+                                        <Input
+                                            placeholder="Tìm kiếm tên thông báo"
+                                            allowClear
+                                            style={{ width: 300 }}
+                                            onChange={handleFilterName}
+                                            value={selectedInput}
+                                        />
                                     </Col>
                                     <Col span="6">
                                         <Row justify="end">
@@ -184,8 +201,15 @@ const Visitors = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={newsList} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách thông báo" bordered={false} >
+                                    <Table columns={columns} dataSource={newsList} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
 
                     <div style={{ marginTop: 30 }}>

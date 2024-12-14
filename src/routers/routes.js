@@ -27,7 +27,7 @@ const Login = lazy(() => {
 
 const AccountManagement = lazy(() => {
     return Promise.all([
-        import('../pages/AccountManagement/accountManagement'),
+        import('../pages/UserManagement/userManagement'),
         new Promise(resolve => setTimeout(resolve, 0))
     ])
         .then(([moduleExports]) => moduleExports);
@@ -326,7 +326,7 @@ const RouterURL = withRouter(({ location }) => {
                             <Suspense fallback={<LoadingScreen />}>
                                 <SalesManagement />
                             </Suspense>
-                        </PrivateRoute> 
+                        </PrivateRoute>
 
                         <PrivateRoute exact path="/asset-history">
                             <Suspense fallback={<LoadingScreen />}>
@@ -376,7 +376,7 @@ const RouterURL = withRouter(({ location }) => {
                             </Suspense>
                         </PrivateRoute>
 
-                        
+
                         <PrivateRoute exact path="/contracts-management">
                             <Suspense fallback={<LoadingScreen />}>
                                 <ContractManagement />
@@ -442,7 +442,7 @@ const RouterURL = withRouter(({ location }) => {
                                 <DashBoard />
                             </Suspense>
                         </PrivateRoute>
-                        
+
                         <PrivateRoute exact path="/notfound">
                             <NotFound />
                         </PrivateRoute>
@@ -468,7 +468,7 @@ const RouterURL = withRouter(({ location }) => {
                     <Route exact path="/reset-password/:id">
                         <LoginContainer />
                     </Route>
-                    
+
                     <Route exact path="/profile">
                         <DefaultContainer />
                     </Route>
@@ -580,8 +580,8 @@ const RouterURL = withRouter(({ location }) => {
                     <Route exact path="/dash-board">
                         <DefaultContainer />
                     </Route>
-                    
-                    
+
+
                     <Route>
                         <NotFound />
                     </Route>

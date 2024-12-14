@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    FolderOpenOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -19,7 +19,8 @@ import {
     Table,
     notification,
     Select,
-    DatePicker
+    DatePicker,
+    Card
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import emergencyMaintenanceApi from "../../../apis/emergencyMaintenanceApi";
@@ -214,7 +215,7 @@ const EmergencyMaintenance = () => {
             key: 'id',
         },
         {
-            title: 'Tài sản',
+            title: 'Thiết bị',
             dataIndex: 'asset_name',
             key: 'asset_name',
         },
@@ -342,8 +343,8 @@ const EmergencyMaintenance = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div className=''>
+                    <div style={{ marginTop: 20 }} className='header-emergency-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -351,14 +352,14 @@ const EmergencyMaintenance = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Quản lý vấn đề khẩn cấp</span>
+                                <FolderOpenOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý vấn đề khẩn cấp</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -385,8 +386,15 @@ const EmergencyMaintenance = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách vấn đề khẩn cấp" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -423,16 +431,16 @@ const EmergencyMaintenance = () => {
 
                         <Form.Item
                             name="asset_id"
-                            label="Tài sản"
+                            label="Thiết bị"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản',
+                                    message: 'Vui lòng chọn thiết bị',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn tài sản">
+                            <Select placeholder="Chọn thiết bị">
                                 {assetList?.map(asset => (
                                     <Option key={asset.id} value={asset.id}>
                                         {asset.name}
@@ -512,16 +520,16 @@ const EmergencyMaintenance = () => {
                     >
                         <Form.Item
                             name="asset_id"
-                            label="Tài sản"
+                            label="Thiết bị"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản',
+                                    message: 'Vui lòng chọn thiết bị',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn tài sản" disabled={disabled}>
+                            <Select placeholder="Chọn thiết bị" disabled={disabled}>
                                 {assetList?.map(asset => (
                                     <Option key={asset.id} value={asset.id}>
                                         {asset.name}

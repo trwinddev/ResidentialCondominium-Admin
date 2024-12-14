@@ -16,7 +16,7 @@ const ResetPassword = () => {
     const onFinish = async (values) => {
         const resetPassWord = {
                 token: id,
-                newPassword: values.password 
+                newPassword: values.password
         }
         axiosClient.post("/auth/reset-password", resetPassWord)
             .then(function (response) {
@@ -64,7 +64,7 @@ const ResetPassword = () => {
                         onFinish={onFinish}
                     >
                         <Form.Item style={{ marginBottom: 3, marginTop: 65 }}>
-                            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">Residential Condominium!</Divider>
+                            <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">BareHome</Divider>
                         </Form.Item>
                         <Form.Item style={{ marginBottom: 16, textAlign: "center" }}>
                             <p className="text">Thay đổi mật khẩu</p>

@@ -32,3 +32,9 @@ text-align: left;
 .ant-menu-light .ant-menu-item-selected{
 color: white;
 }
+
+.ant-layout-sider {
+  width: 250px !important;
+  min-width: 250px !important;
+  max-width: 250px !important;
+}

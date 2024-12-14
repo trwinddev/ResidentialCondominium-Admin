@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    CloudSyncOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -20,7 +20,8 @@ import {
     notification,
     DatePicker,
     InputNumber,
-    Select
+    Select,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -295,8 +296,8 @@ const MaintenanceHistory = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div className=''>
+                    <div style={{ marginTop: 20 }} className='header-maintenance-history-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -304,14 +305,14 @@ const MaintenanceHistory = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Lịch sử bảo trì</span>
+                                <CloudSyncOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Lịch sử bảo trì</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -338,8 +339,15 @@ const MaintenanceHistory = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách lịch sử bảo trì" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -385,7 +393,7 @@ const MaintenanceHistory = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <Select placeholder="Chọn kế hoạch bảo trì">
-                                {categoryList.map(category => (
+                                {categoryList?.map(category => (
                                     <Option key={category.id} value={category.id}>
                                         {category.plan_description}
                                     </Option>
@@ -483,7 +491,7 @@ const MaintenanceHistory = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <Select placeholder="Chọn kế hoạch bảo trì">
-                                {categoryList.map(category => (
+                                {categoryList?.map(category => (
                                     <Option key={category.id} value={category.id}>
                                         {category.plan_description}
                                     </Option>

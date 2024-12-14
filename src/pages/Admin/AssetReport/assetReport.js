@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    FileOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -19,7 +19,8 @@ import {
     Table,
     notification,
     DatePicker,
-    Select
+    Select,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -63,14 +64,14 @@ const AssetReport = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo báo cáo tài sản thất bại',
+                            'Tạo báo cáo thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo báo cáo tài sản thành công',
+                            'Tạo báo cáo thiết bị thành công',
                     });
                     setOpenModalCreate(false);
                     handleCategoryList();
@@ -94,14 +95,14 @@ const AssetReport = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa báo cáo tài sản thất bại',
+                            'Chỉnh sửa báo cáo thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa báo cáo tài sản thành công',
+                            'Chỉnh sửa báo cáo thiết bị thành công',
                     });
                     handleCategoryList();
                     setOpenModalUpdate(false);
@@ -160,7 +161,7 @@ const AssetReport = () => {
             render: (text, record, index) => index + 1,
         },
         {
-            title: 'Tên tài sản',
+            title: 'Tên thiết bị',
             dataIndex: 'name',
             key: 'name',
         },
@@ -212,8 +213,8 @@ const AssetReport = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-asset-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -221,14 +222,14 @@ const AssetReport = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Báo cáo tài sản</span>
+                                <FileOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Báo cáo thiết bị</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -236,7 +237,7 @@ const AssetReport = () => {
                                 <Row>
                                     <Col span="18">
                                         <Input
-                                            placeholder="Tìm kiếm theo tên tài sản"
+                                            placeholder="Tìm kiếm theo tên thiết bị"
                                             allowClear
                                             onChange={handleFilter}
                                             style={{ width: 300 }}
@@ -245,7 +246,7 @@ const AssetReport = () => {
                                     <Col span="6">
                                         <Row justify="end">
                                             <Space>
-                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo báo cáo tài sản</Button>
+                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo báo cáo thiết bị</Button>
                                             </Space>
                                         </Row>
                                     </Col>
@@ -255,13 +256,20 @@ const AssetReport = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách báo cáo thiết bị" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <Modal
-                    title="Tạo báo cáo tài sản mới"
+                    title="Tạo báo cáo thiết bị mới"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -293,17 +301,17 @@ const AssetReport = () => {
                         <Spin spinning={loading}>
                             <Form.Item
                                 name="assetId"
-                                label="Tài sản"
+                                label="Thiết bị"
                                 rules={[
                                     {
                                         required: true,
-                                        message: 'Vui lòng chọn tài sản',
+                                        message: 'Vui lòng chọn thiết bị',
                                     },
                                 ]}
                                 style={{ marginBottom: 10 }}
                             >
-                                <Select placeholder="Chọn tài sản">
-                                    {categoryList.map(category => (
+                                <Select placeholder="Chọn thiết bị">
+                                    {categoryList?.map(category => (
                                         <Option key={category.id} value={category.id}>
                                             {category.name}
                                         </Option>
@@ -361,7 +369,7 @@ const AssetReport = () => {
 
 
                 <Modal
-                    title="Chỉnh sửa báo cáo tài sản"
+                    title="Chỉnh sửa báo cáo thiết bị"
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {

@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   const handleForgotPasswordSubmit = async () => {
-    const values = await forgotPasswordForm.validateFields(); 
+    const values = await forgotPasswordForm.validateFields();
     console.log(values.email);
 
     try {
@@ -98,10 +98,10 @@ const Login = () => {
             onFinish={onFinish}
           >
             <Form.Item style={{ marginBottom: 3, marginTop: 65 }}>
-              <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">CHÀO MỪNG BẠN ĐẾN VỚI HỆ THỐNG!</Divider>
+              <Divider style={{ marginBottom: 5, fontSize: 19 }} orientation="center">BAREHOME ADMIN</Divider>
             </Form.Item>
             <Form.Item style={{ marginBottom: 16, textAlign: "center" }}>
-              <p className="text">Đăng nhập để vào hệ thống quản lý</p>
+              <p className="text"><span style={{ fontWeight: "bold" }}>ĐĂNG NHẬP</span> để vào hệ thống quản lý</p>
             </Form.Item>
             <>
               {isLogin === false ?

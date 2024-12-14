@@ -34,3 +34,26 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+.ant-layout-content {
+    margin-left: 250px !important;
+    width: calc(100% - 250px) !important;
+}
+
+.ant-layout-content {
+    margin-left: 250px !important;
+    width: calc(100% - 250px) !important;
+}
+
+#dashboard-layout{
+    background-color: #F5F5F5 !important;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0px 20px 24px 5px !important;
+    border: 0 none;
+    overflow: hidden;
+    box-shadow: none !important;
+}

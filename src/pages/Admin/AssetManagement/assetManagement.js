@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    ContainerOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -19,7 +19,8 @@ import {
     Table,
     notification,
     Select,
-    InputNumber
+    InputNumber,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -66,7 +67,7 @@ const AssetManagement = () => {
                    notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tên tài sản không được trùng',
+                            'Tên thiết bị không được trùng',
                     });
                     setLoading(false);
                     return;
@@ -75,14 +76,14 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo tài sản thất bại',
+                            'Tạo thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo tài sản thành công',
+                            'Tạo thiết bị thành công',
                     });
                     setOpenModalCreate(false);
                     handleCategoryList();
@@ -112,7 +113,7 @@ const AssetManagement = () => {
                     notification["error"]({
                          message: `Thông báo`,
                          description:
-                             'Tên tài sản không được trùng',
+                             'Tên thiết bị không được trùng',
                      });
                      setLoading(false);
                      return;
@@ -122,14 +123,14 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa tài sản thất bại',
+                            'Chỉnh sửa thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa tài sản thành công',
+                            'Chỉnh sửa thiết bị thành công',
                     });
                     handleCategoryList();
                     setOpenModalUpdate(false);
@@ -170,7 +171,7 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                        "Không thể xóa tài sản vì nó đã được sử dụng trong một sự kiện hoặc quá trình khác.",
+                        "Không thể xóa thiết bị vì nó đã được sử dụng trong một sự kiện hoặc quá trình khác.",
 
                     });
                     setLoading(false);
@@ -180,7 +181,7 @@ const AssetManagement = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa tài sản thất bại',
+                            'Xóa thiết bị thất bại',
 
                     });
                     setLoading(false);
@@ -189,7 +190,7 @@ const AssetManagement = () => {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa tài sản thành công',
+                            'Xóa thiết bị thành công',
 
                     });
                     handleCategoryList();
@@ -317,7 +318,7 @@ const AssetManagement = () => {
                         <div
                             style={{ marginLeft: 10 }}>
                             <Popconfirm
-                                title="Bạn có chắc chắn xóa tài sản này?"
+                                title="Bạn có chắc chắn xóa thiết bị này?"
                                 onConfirm={() => handleDeleteCategory(record.id)}
                                 okText="Yes"
                                 cancelText="No"
@@ -357,7 +358,7 @@ const AssetManagement = () => {
                     const filteredByCategoryName = res.data.filter(item => item.category_name
                         .toLowerCase() === category_name.toLowerCase());
 
-                    // Cập nhật danh sách tài sản
+                    // Cập nhật danh sách thiết bị
                     setCategory(filteredByCategoryName);
                 });
             } else {
@@ -397,8 +398,8 @@ const AssetManagement = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-asset-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -406,14 +407,14 @@ const AssetManagement = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Tài sản</span>
+                                <ContainerOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý thiết bị</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="asset">
+                        <div id="asset_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -440,13 +441,13 @@ const AssetManagement = () => {
                                                     value={selectedCategory}
                                                 >
                                                     <Option value="">Tất cả danh mục</Option>
-                                                    {categoryList.map(category => (
+                                                    {categoryList?.map(category => (
                                                         <Option key={category.name} value={category.name}>
                                                             {category.name}
                                                         </Option>
                                                     ))}
                                                 </Select>
-                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo tài sản</Button>
+                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo thiết bị</Button>
                                             </Space>
                                         </Row>
                                     </Col>
@@ -455,14 +456,20 @@ const AssetManagement = () => {
                             </PageHeader>
                         </div>
                     </div>
-
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="asset">
+                            <div id="asset_container">
+                                <Card title="Danh sách thiết bị" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <Modal
-                    title="Tạo tài sản"
+                    title="Tạo thiết bị"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -583,7 +590,7 @@ const AssetManagement = () => {
                                 style={{ marginBottom: 10 }}
                             >
                                 <Select placeholder="Chọn danh mục">
-                                    {categoryList.map(category => (
+                                    {categoryList?.map(category => (
                                         <Option key={category.id} value={category.id}>
                                             {category.name}
                                         </Option>
@@ -614,7 +621,7 @@ const AssetManagement = () => {
                 </Modal>
 
                 <Modal
-                    title="Chỉnh sửa tài sản"
+                    title="Chỉnh sửa thiết bị"
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -734,7 +741,7 @@ const AssetManagement = () => {
                                 style={{ marginBottom: 10 }}
                             >
                                 <Select placeholder="Chọn danh mục">
-                                    {categoryList.map(category => (
+                                    {categoryList?.map(category => (
                                         <Option key={category.id} value={category.id}>
                                             {category.name}
                                         </Option>

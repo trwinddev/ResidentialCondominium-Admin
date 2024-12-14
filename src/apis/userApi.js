@@ -68,6 +68,14 @@ const userApi = {
         return axiosClient.get(url, { params });
     },
 
+    searchNotificationByName(name) {
+        const params = {
+            name: name.target.value
+        }
+        const url = '/notifications/searchByName';
+        return axiosClient.get(url, { params });
+    },
+
     sendNotification(data) {
         console.log(data);
         const url = '/auth/notifications';

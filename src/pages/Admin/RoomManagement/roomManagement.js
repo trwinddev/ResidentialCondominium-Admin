@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    AppstoreOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -17,6 +17,7 @@ import {
     Space,
     Spin,
     Table,
+    Card,
     notification,
     Select,
     InputNumber
@@ -54,7 +55,7 @@ const RoomManagement = () => {
                 name: values.name,
                 type: values.type,
                 area: values.area,
-                capacity: values.capacity,
+                // capacity: values.capacity,
                 status: values.status,
                 description: values.description,
             };
@@ -143,7 +144,7 @@ const RoomManagement = () => {
                 name: values.name,
                 type: values.type,
                 area: values.area,
-                capacity: values.capacity,
+                // capacity: values.capacity,
                 status: values.status,
                 description: values.description,
             }
@@ -243,7 +244,7 @@ const RoomManagement = () => {
                     name: response.data.name,
                     type: response.data.type,
                     area: response.data.area,
-                    capacity: response.data.capacity,
+                    // capacity: response.data.capacity,
                     status: response.data.status,
                     description: response.data.description,
                 });
@@ -296,13 +297,13 @@ const RoomManagement = () => {
             render: (text) => <div>{text}m2</div>,
 
         },
-        {
-            title: 'Sức chứa',
-            dataIndex: 'capacity',
-            key: 'capacity',
-            render: (text) => <div>{text} người</div>,
+        // {
+        //     title: 'Sức chứa',
+        //     dataIndex: 'capacity',
+        //     key: 'capacity',
+        //     render: (text) => <div>{text} người</div>,
 
-        },
+        // },
         {
             title: 'Trạng thái',
             dataIndex: 'status',
@@ -357,7 +358,7 @@ const RoomManagement = () => {
                                 </Button>
                             </Popconfirm>
                         </div>
-                        <div style={{ marginTop: 6 }}>
+                        {/* <div style={{ marginTop: 6 }}>
                             {record.residents && record.residents.length > 0 ? (
                                 <Button
                                     size="small"
@@ -377,7 +378,7 @@ const RoomManagement = () => {
                                     {"Thêm cư dân"}
                                 </Button>
                             )}
-                        </div>
+                        </div> */}
                     </Row>
                 </div>
             ),
@@ -400,7 +401,7 @@ const RoomManagement = () => {
                     const filteredByCategoryName = res.data.filter(item => item.status
                         .toLowerCase() === status.toLowerCase());
 
-                    // Cập nhật danh sách tài sản
+                    // Cập nhật danh sách thiết bị
                     setCategory(filteredByCategoryName);
                 });
             } else {
@@ -448,8 +449,8 @@ const RoomManagement = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-room-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -457,14 +458,14 @@ const RoomManagement = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Quản lý phòng</span>
+                                <AppstoreOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý phòng</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -504,8 +505,14 @@ const RoomManagement = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20 }}>
+                        <div id="room">
+                            <div id="room_container">
+                                <Card title="Danh sách phòng" bordered={false} >
+                                    <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -639,7 +646,7 @@ const RoomManagement = () => {
                                 placeholder="Diện tích (m2)"
                             />
                         </Form.Item>
-                        <Form.Item
+                        {/* <Form.Item
                             name="capacity"
                             label="Sức chứa (người)"
                             rules={[
@@ -651,7 +658,7 @@ const RoomManagement = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <InputNumber placeholder="Sức chứa" />
-                        </Form.Item>
+                        </Form.Item> */}
                         <Form.Item
                             name="status"
                             label="Trạng thái"
@@ -756,7 +763,7 @@ const RoomManagement = () => {
                                 placeholder="Diện tích (m2)"
                             />
                         </Form.Item>
-                        <Form.Item
+                        {/* <Form.Item
                             name="capacity"
                             label="Sức chứa (người)"
                             rules={[
@@ -768,7 +775,7 @@ const RoomManagement = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <InputNumber placeholder="Sức chứa" />
-                        </Form.Item>
+                        </Form.Item> */}
                         <Form.Item
                             name="status"
                             label="Trạng thái"

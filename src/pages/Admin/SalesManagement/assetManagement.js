@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    BarcodeOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -20,7 +20,8 @@ import {
     notification,
     Select,
     DatePicker,
-    InputNumber
+    InputNumber,
+    Card
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -67,14 +68,14 @@ const SalesManagement = () => {
                         notification["error"]({
                             message: `Thông báo`,
                             description:
-                                'mua tài sản thất bại',
+                                'Mua thiết bị thất bại',
                         });
                     }
                     else {
                         notification["success"]({
                             message: `Thông báo`,
                             description:
-                                'Tạo mua bán tài sản thành công',
+                                'Tạo mua bán thiết bị thành công',
                         });
                         setOpenModalCreate(false);
                         handleCategoryList();
@@ -87,7 +88,7 @@ const SalesManagement = () => {
                         notification["error"]({
                             message: `Thông báo`,
                             description:
-                                'Số lượng tài sản không đủ để bán',
+                                'Số lượng thiết bị không đủ để bán',
                         });
                         setLoading(false);
                         return;
@@ -96,14 +97,14 @@ const SalesManagement = () => {
                         notification["error"]({
                             message: `Thông báo`,
                             description:
-                                'Bán tài sản thất bại',
+                                'Bán thiết bị thất bại',
                         });
                     }
                     else {
                         notification["success"]({
                             message: `Thông báo`,
                             description:
-                                'Bán tài sản thành công',
+                                'Bán thiết bị thành công',
                         });
                         setOpenModalCreate(false);
                         handleCategoryList();
@@ -214,8 +215,8 @@ const SalesManagement = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-sales-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -223,14 +224,14 @@ const SalesManagement = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item>
-                                <ShoppingOutlined />
-                                <span>Quản lý mua bán tài sản</span>
+                                <BarcodeOutlined />
+                                <span>Quản lý mua bán thiết bị</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -246,7 +247,7 @@ const SalesManagement = () => {
                                     </Col>
                                     <Col span="6">
                                         <Row justify="end">
-                                            <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo mua bán tài sản</Button>
+                                            <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo mua bán thiết bị</Button>
 
                                         </Row>
                                     </Col>
@@ -256,14 +257,21 @@ const SalesManagement = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách mua bán thiết bị" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
 
                 <Modal
-                    title="Tạo mua bán tài sản"
+                    title="Tạo mua bán thiết bị"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -294,16 +302,16 @@ const SalesManagement = () => {
                     >
                         <Form.Item
                             name="asset_id"
-                            label="Tài sản"
+                            label="Thiết bị"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng chọn tài sản',
+                                    message: 'Vui lòng chọn thiết bị',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn tài sản">
+                            <Select placeholder="Chọn thiết bị">
                                 {assetList?.map(asset => (
                                     <Option key={asset.id} value={asset.id}>
                                         {asset.name}

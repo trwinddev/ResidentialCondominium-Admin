@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    CalendarOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -19,7 +19,8 @@ import {
     Table,
     notification,
     Select,
-    DatePicker
+    DatePicker,
+    Card
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import complaintApi from "../../../apis/complaintApi";
@@ -251,11 +252,11 @@ const ComplaintManagement = () => {
             dataIndex: 'status',
             key: 'status',
         },
-        {
-            title: 'Đánh giá',
-            dataIndex: 'progress',
-            key: 'progress',
-        },
+        // {
+        //     title: 'Đánh giá',
+        //     dataIndex: 'progress',
+        //     key: 'progress',
+        // },
         {
             title: 'Đảm nhiệm bởi',
             dataIndex: 'assigned_to',
@@ -331,11 +332,11 @@ const ComplaintManagement = () => {
             dataIndex: 'status',
             key: 'status',
         },
-        {
-            title: 'Đánh giá',
-            dataIndex: 'progress',
-            key: 'progress',
-        },
+        // {
+        //     title: 'Đánh giá',
+        //     dataIndex: 'progress',
+        //     key: 'progress',
+        // },
         {
             title: 'Đảm nhiệm bởi',
             dataIndex: 'assigned_to',
@@ -423,35 +424,31 @@ const ComplaintManagement = () => {
 
                 const createdById = response.user.id;
 
+                const allComplaints = await complaintApi.listComplaints();
+
                 if (response.user.role == "isAdmin") {
-                    await complaintApi.listComplaints().then((res) => {
-                        setCategory(res);
-                        setLoading(false);
-                    });
+                    setCategory(allComplaints);
                 } else {
-                    await complaintApi.listComplaints().then((res) => {
-                        console.log(res);
-
-                        // Filter complaints based on the created_by field
-                        const filteredComplaints = res.filter(complaint => complaint.created_by === createdById);
-
-                        setCategory(filteredComplaints);
-                        setLoading(false);
-                    });
+                    const filteredComplaints = allComplaints.filter(complaint =>
+                        complaint.created_by === createdById
+                    );
+                    setCategory(filteredComplaints);
                 }
 
+                handleFilter2("all");
 
-
+                setLoading(false);
             } catch (error) {
                 console.log('Failed to fetch category list:' + error);
             }
         })();
-    }, [])
+    }, []);
+
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div className=''>
+                    <div style={{ marginTop: 20 }} className='header-complaint-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -459,8 +456,8 @@ const ComplaintManagement = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Quản lý khiếu nại</span>
+                                <CalendarOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý khiếu nại</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
@@ -489,9 +486,10 @@ const ComplaintManagement = () => {
                                                     onChange={(value) => {
                                                         handleFilter2(value);
                                                     }}
+                                                    defaultValue="all"
                                                 >
                                                     <Option value="all">Toàn bộ</Option>
-                                                    <Option value="resident">Cư đân</Option>
+                                                    <Option value="resident">Cư dân</Option>
                                                     <Option value="isReceptionist">Lễ tân</Option>
                                                     <Option value="isSecurity">Bảo vệ</Option>
 
@@ -506,13 +504,27 @@ const ComplaintManagement = () => {
                         </div>
                     </div>
 
-                    {userData.role === "isAdmin" ?
-                        <div style={{ marginTop: 30 }}>
-                            <Table columns={columns2} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
-                        </div> :
-                        <div style={{ marginTop: 30 }}>
-                            <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    {userData?.role === "isAdmin" ?
+                        <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách khiếu nại" bordered={false} >
+                                    <Table columns={columns2} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
                         </div>
+                    </div> :
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách khiếu nại" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
+                    </div>
                     }
                 </div>
 

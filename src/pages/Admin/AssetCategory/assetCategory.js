@@ -52,12 +52,12 @@ const AssetCategory = () => {
                 "description": values.description,
             }
             return assetCategoryApi.createAssetCategory(categoryList).then(response => {
-                if (response.error == "Tên loại tài sản đã tồn tại.") {
+                if (response.error == "Tên loại thiết bị đã tồn tại.") {
                     setLoading(false);
                     return notification["error"]({
                          message: `Thông báo`,
                          description:
-                             'Tên loại tài sản đã tồn tại.',
+                             'Tên loại thiết bị đã tồn tại.',
 
                      });
                  }
@@ -66,14 +66,14 @@ const AssetCategory = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo danh mục tài sản thất bại',
+                            'Tạo danh mục thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo danh mục tài sản thành công',
+                            'Tạo danh mục thiết bị thành công',
                     });
                     setOpenModalCreate(false);
                     handleCategoryList();
@@ -93,12 +93,12 @@ const AssetCategory = () => {
                 "description": values.description,
             }
             return assetCategoryApi.updateAssetCategory(categoryList, id).then(response => {
-                if (response.error == "Tên loại tài sản đã tồn tại.") {
+                if (response.error == "Tên loại thiết bị đã tồn tại.") {
                     setLoading(false);
                     return notification["error"]({
                          message: `Thông báo`,
                          description:
-                             'Tên loại tài sản đã tồn tại.',
+                             'Tên loại thiết bị đã tồn tại.',
 
                      });
                  }
@@ -106,14 +106,14 @@ const AssetCategory = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa danh mục tài sản thất bại',
+                            'Chỉnh sửa danh mục thiết bị thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa danh mục tài sản thành công',
+                            'Chỉnh sửa danh mục thiết bị thành công',
                     });
                     handleCategoryList();
                     setOpenModalUpdate(false);
@@ -164,7 +164,7 @@ const AssetCategory = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa danh mục tài sản thất bại',
+                            'Xóa danh mục thiết bị thất bại',
 
                     });
                     setLoading(false);
@@ -173,7 +173,7 @@ const AssetCategory = () => {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa danh mục tài sản thành công',
+                            'Xóa danh mục thiết bị thành công',
 
                     });
                     handleCategoryList();
@@ -252,7 +252,7 @@ const AssetCategory = () => {
                         <div
                             style={{ marginLeft: 10 }}>
                             <Popconfirm
-                                title="Bạn có chắc chắn xóa danh mục tài sản này?"
+                                title="Bạn có chắc chắn xóa danh mục thiết bị này?"
                                 onConfirm={() => handleDeleteCategory(record.id)}
                                 okText="Yes"
                                 cancelText="No"
@@ -289,8 +289,8 @@ const AssetCategory = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='asset-category-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -298,14 +298,14 @@ const AssetCategory = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Danh mục tài sản</span>
+                                <ShoppingOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Danh mục thiết bị</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -322,7 +322,7 @@ const AssetCategory = () => {
                                     <Col span="6">
                                         <Row justify="end">
                                             <Space>
-                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo danh mục tài sản</Button>
+                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo danh mục thiết bị</Button>
                                             </Space>
                                         </Row>
                                     </Col>
@@ -332,15 +332,19 @@ const AssetCategory = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 24 }}>
-                        <Card title="Danh mục tài sản" bordered={false} >
-                                <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
-                        </Card>
+                    <div style={{ marginTop: 20}}>
+                        <div id="my__event">
+                            <div id="my__event_container__list">
+                                <Card title="Danh sách danh mục thiết bị" bordered={false} >
+                                    <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <Modal
-                    title="Tạo danh mục tài sản"
+                    title="Tạo danh mục thiết bị"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -400,7 +404,7 @@ const AssetCategory = () => {
                 </Modal>
 
                 <Modal
-                    title="Chỉnh sửa danh mục tài sản"
+                    title="Chỉnh sửa danh mục thiết bị"
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {

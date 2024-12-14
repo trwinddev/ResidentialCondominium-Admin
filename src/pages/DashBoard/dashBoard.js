@@ -93,17 +93,17 @@ const DashBoard = () => {
         })();
     }, [])
     return (
-        <div>
+        <div id='dashboard-layout'>
             <Spin spinning={false}>
-                <div className='container'>
+                <div>
                     <div style={{ marginTop: 20 }}>
                         <Breadcrumb>
                             {/* <Breadcrumb.Item href="">
                                 <HomeOutlined />
                             </Breadcrumb.Item> */}
                             <Breadcrumb.Item href="">
-                                <HomeOutlined />
-                                <span>Trang chủ</span>
+                                <HomeOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Trang chủ</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
@@ -145,7 +145,7 @@ const DashBoard = () => {
                                                 currency: 'VND'
                                             })}
                                         </div>
-                                        <div className='title_total'>Tổng giá trị tài sản</div>
+                                        <div className='title_total'>Tổng giá trị thiết bị</div>
                                     </div>
                                     <div>
                                         <HddTwoTone style={{ fontSize: 48 }} />
@@ -196,7 +196,7 @@ const DashBoard = () => {
                                 </div>
                             </Card>
                         </Col>
-                        <Col span={6}>
+                        {/* <Col span={6}>
                             <Card className="card_total" bordered={false}>
                                 <div className='card_number'>
                                     <div>
@@ -208,7 +208,7 @@ const DashBoard = () => {
                                     </div>
                                 </div>
                             </Card>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </div>
                 <BackTop style={{ textAlign: 'right' }} />

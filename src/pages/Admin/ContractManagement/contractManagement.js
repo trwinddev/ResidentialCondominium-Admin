@@ -3,7 +3,7 @@ import {
     EditOutlined,
     HomeOutlined,
     PlusOutlined,
-    ShoppingOutlined
+    CarryOutOutlined
 } from '@ant-design/icons';
 import { PageHeader } from '@ant-design/pro-layout';
 import {
@@ -20,7 +20,8 @@ import {
     notification,
     Select,
     DatePicker,
-    InputNumber
+    InputNumber,
+    Card
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import contractManagementApi from "../../../apis/contractManagementApi";
@@ -356,8 +357,8 @@ const ContractManagement = () => {
     return (
         <div>
             <Spin spinning={loading}>
-                <div className='container'>
-                    <div style={{ marginTop: 20 }}>
+                <div>
+                    <div style={{ marginTop: 20 }} className='header-contract-management-container'>
                         <Breadcrumb>
                             <Breadcrumb.Item>
                                 <Link to="/dash-board">
@@ -365,14 +366,14 @@ const ContractManagement = () => {
                                 </Link>
                             </Breadcrumb.Item>
                             <Breadcrumb.Item href="">
-                                <ShoppingOutlined />
-                                <span>Quản lý giấy tờ</span>
+                                <CarryOutOutlined style={{ color: 'rgba(0, 0, 0, 0.88)' }}/>
+                                <span style={{ color: 'rgba(0, 0, 0, 0.88)' }}>Quản lý giấy tờ</span>
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </div>
 
-                    <div style={{ marginTop: 20 }}>
-                        <div id="my__event_container__list">
+                    <div id="account">
+                        <div id="account_container">
                             <PageHeader
                                 subTitle=""
                                 style={{ fontSize: 14, paddingTop: 20, paddingBottom: 20 }}
@@ -399,8 +400,15 @@ const ContractManagement = () => {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: 30 }}>
-                        <Table columns={columns} pagination={{ position: ['bottomCenter'] }} dataSource={category} />
+                    <div style={{ marginTop: 20}}>
+                        <div id="account">
+                            <div id="account_container">
+                                <Card title="Danh sách giấy tờ" bordered={false} >
+                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    />
+                                </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -447,7 +455,7 @@ const ContractManagement = () => {
                                 style={{ marginBottom: 10 }}
                             >
                                 <Select placeholder="Chọn nhà cung cấp">
-                                    {categoryList.map(category => (
+                                    {categoryList?.map(category => (
                                         <Option key={category.id} value={category.id}>
                                             {category.name}
                                         </Option>
@@ -590,7 +598,7 @@ const ContractManagement = () => {
                                 style={{ marginBottom: 10 }}
                             >
                                 <Select placeholder="Chọn nhà cung cấp">
-                                    {categoryList.map(category => (
+                                    {categoryList?.map(category => (
                                         <Option key={category.id} value={category.id}>
                                             {category.name}
                                         </Option>
