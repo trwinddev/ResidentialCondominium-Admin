@@ -255,11 +255,11 @@ const AssetManagement = () => {
             dataIndex: 'name',
             key: 'name',
         },
-        {
-            title: 'Mô tả',
-            dataIndex: 'description',
-            key: 'description',
-        },
+        // {
+        //     title: 'Mô tả',
+        //     dataIndex: 'description',
+        //     key: 'description',
+        // },
         {
             title: 'Giá trị',
             dataIndex: 'value',
@@ -285,23 +285,23 @@ const AssetManagement = () => {
             dataIndex: 'category_name',
             key: 'category_name',
         },
-        {
-            title: 'Ngày tạo',
-            key: 'created_at',
-            dataIndex: 'created_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
-        {
-            title: 'Ngày cập nhật',
-            key: 'updated_at',
-            dataIndex: 'updated_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
-        {
-            title: 'Số lượng',
-            key: 'quantity',
-            dataIndex: 'quantity',
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     key: 'created_at',
+        //     dataIndex: 'created_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
+        // {
+        //     title: 'Ngày cập nhật',
+        //     key: 'updated_at',
+        //     dataIndex: 'updated_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
+        // {
+        //     title: 'Số lượng',
+        //     key: 'quantity',
+        //     dataIndex: 'quantity',
+        // },
         {
             title: 'Hành động',
             key: 'action',
@@ -749,7 +749,7 @@ const AssetManagement = () => {
                                 </Select>
                             </Form.Item>
 
-                            <Form.Item
+                            {/* <Form.Item
                                 name="quantity"
                                 label="Số lượng"
                                 rules={[
@@ -761,7 +761,7 @@ const AssetManagement = () => {
                                 style={{ marginBottom: 10 }}
                             >
                                 <InputNumber placeholder="Số lượng" disabled/>
-                            </Form.Item>
+                            </Form.Item> */}
 
                             <Form.Item name="image" label="Ảnh hiện tại">
                                 <Input disabled value={form2.getFieldValue('image')} />

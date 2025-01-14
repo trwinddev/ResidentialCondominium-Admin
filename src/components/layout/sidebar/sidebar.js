@@ -181,11 +181,17 @@ function Sidebar() {
       link: "/dash-board",
       icon: <DashboardOutlined />,
     },
+    // {
+    //   key: "customer-enrollment",
+    //   title: "Ghi danh khách hàng",
+    //   link: "/customer-enrollment",
+    //   icon: <ExportOutlined />,
+    // },
     {
-      key: "customer-enrollment",
-      title: "Ghi danh khách hàng",
-      link: "/customer-enrollment",
-      icon: <ExportOutlined />,
+      key: "visitors",
+      title: "Quản lý khách hàng",
+      link: "/visitors",
+      icon: <BorderlessTableOutlined />,
     },
     {
       key: "complaint-management",
@@ -199,12 +205,18 @@ function Sidebar() {
     //   link: "/access-card",
     //   icon: <BookOutlined />
     // },
-    {
-      key: "reception-management",
-      title: "Quản lý đặt lịch",
-      link: "/reception-management",
-      icon: <BlockOutlined />,
-    },
+    // {
+    //   key: "reception-management",
+    //   title: "Quản lý đặt lịch",
+    //   link: "/reception-management",
+    //   icon: <BlockOutlined />,
+    // },
+    // {
+    //   key: "visitors",
+    //   title: "Quản lý khách hàng",
+    //   link: "/visitors",
+    //   icon: <BorderlessTableOutlined />,
+    // },
   ];
 
   const menuSidebarAccountant = [];

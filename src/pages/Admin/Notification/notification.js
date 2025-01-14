@@ -119,12 +119,12 @@ const Visitors = () => {
             key: 'end_date',
             render: (text) => moment(text).format('DD-MM-YYYY'),
         },
-        {
-            title: 'Ngày tạo',
-            dataIndex: 'created_at',
-            key: 'created_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     dataIndex: 'created_at',
+        //     key: 'created_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
     ];
 
     const handleList = () => {

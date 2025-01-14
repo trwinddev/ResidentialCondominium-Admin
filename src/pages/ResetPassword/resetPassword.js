@@ -86,7 +86,7 @@ const ResetPassword = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập mật khẩu!',
+                                    message: 'Vui lòng nhập mật khẩu',
                                 },
                             ]}
                             hasFeedback
@@ -101,7 +101,7 @@ const ResetPassword = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập lại mật khẩu!',
+                                    message: 'Vui lòng nhập lại mật khẩu',
                                 },
                                 ({ getFieldValue }) => ({
                                     validator(_, value) {
@@ -109,7 +109,7 @@ const ResetPassword = () => {
                                             return Promise.resolve();
                                         }
 
-                                        return Promise.reject(new Error('Hai mật khẩu bạn nhập không khớp!'));
+                                        return Promise.reject(new Error('Mật khẩu chưa khớp'));
                                     },
                                 }),
                             ]}
@@ -119,7 +119,7 @@ const ResetPassword = () => {
 
                         <Form.Item style={{ width: '100%', marginTop: 20 }}>
                             <Button className="button" type="primary" htmlType="submit"  >
-                                SUBMIT
+                                Xác nhận
                         </Button>
                         </Form.Item>
                     </Form>

@@ -178,7 +178,7 @@ const EmergencyMaintenance = () => {
             try {
                 const response = await emergencyMaintenanceApi.getDetailEmergencyMaintenance(id);
                 setId(id);
-                if(response.data.status != "pending"){
+                if(response.data.status != "Đang chờ xử lý"){
                     setDisable(true);
                 }
                 form2.setFieldsValue({
@@ -256,12 +256,12 @@ const EmergencyMaintenance = () => {
             dataIndex: 'resolved_by_name',
             key: 'resolved_by_name',
         },
-        {
-            title: 'Ngày tạo',
-            dataIndex: 'created_at',
-            key: 'created_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     dataIndex: 'created_at',
+        //     key: 'created_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
         {
             title: 'Hành động',
             key: 'action',
@@ -276,7 +276,7 @@ const EmergencyMaintenance = () => {
                         >
                             {"Chỉnh sửa"}
                         </Button>
-                        {record.status === 'pending' && (
+                        {record.status === 'Đã xong' && (
                             <div style={{ marginLeft: 10 }}>
                                 <Popconfirm
                                     title="Are you sure to delete this complaint?"

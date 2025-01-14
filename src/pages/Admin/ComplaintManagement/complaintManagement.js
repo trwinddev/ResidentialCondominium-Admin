@@ -133,22 +133,22 @@ const ComplaintManagement = () => {
     const handleCategoryList = async () => {
         try {
 
-            if (userData.role == "isAdmin") {
+            // if (userData.role == "isAdmin") {
                 await complaintApi.listComplaints().then((res) => {
                     setCategory(res);
                     setLoading(false);
                 });
-            } else {
-                await complaintApi.listComplaints().then((res) => {
-                    console.log(res);
+            // } else {
+            //     await complaintApi.listComplaints().then((res) => {
+            //         console.log(res);
 
-                    // Filter complaints based on the created_by field
-                    const filteredComplaints = res.filter(complaint => complaint.created_by === userData.id);
+            //         // Filter complaints based on the created_by field
+            //         const filteredComplaints = res.filter(complaint => complaint.created_by === userData.id);
 
-                    setCategory(filteredComplaints);
-                    setLoading(false);
-                });
-            }
+            //         setCategory(filteredComplaints);
+            //         setLoading(false);
+            //     });
+            // }
         } catch (error) {
             console.log('Failed to fetch event list:' + error);
         };
@@ -192,7 +192,7 @@ const ComplaintManagement = () => {
                 const response = await complaintApi.getDetailComplaint(id);
                 setId(id);
                 setProgress(response.progress);
-                if (response.status != "pending") {
+                if (response.status != "Đang chờ xử lý") {
                     setIsDisabled(true);
                 }
                 form2.setFieldsValue({
@@ -267,7 +267,7 @@ const ComplaintManagement = () => {
             key: 'action',
             render: (text, record) => (
                 <div>
-                    {userData.role !== 'isAdmin' && record.status === 'pending' && (
+                    {(
                         <Row>
                             <Button
                                 size="small"
@@ -279,7 +279,7 @@ const ComplaintManagement = () => {
                             </Button>
                             <div style={{ marginLeft: 10 }}>
                                 <Popconfirm
-                                    title="Are you sure to delete this complaint?"
+                                    title="Bạn có chắc chắn muốn xóa khiếu nại này không?"
                                     onConfirm={() => handleDeleteCategory(record.id)}
                                     okText="Yes"
                                     cancelText="No"
@@ -312,11 +312,11 @@ const ComplaintManagement = () => {
             dataIndex: 'user_name',
             key: 'user_name',
         },
-        {
-            title: 'Email',
-            dataIndex: 'user_email',
-            key: 'user_email',
-        },
+        // {
+        //     title: 'Email',
+        //     dataIndex: 'user_email',
+        //     key: 'user_email',
+        // },
         {
             title: 'Chủ đề',
             dataIndex: 'subject',
@@ -339,8 +339,8 @@ const ComplaintManagement = () => {
         // },
         {
             title: 'Đảm nhiệm bởi',
-            dataIndex: 'assigned_to',
-            key: 'assigned_to',
+            dataIndex: 'assigned_to_name',
+            key: 'assigned_to_name',
         },
         {
             title: 'Hành động',
@@ -426,14 +426,15 @@ const ComplaintManagement = () => {
 
                 const allComplaints = await complaintApi.listComplaints();
 
-                if (response.user.role == "isAdmin") {
+                // if (response.user.role == "isAdmin") {
                     setCategory(allComplaints);
-                } else {
-                    const filteredComplaints = allComplaints.filter(complaint =>
-                        complaint.created_by === createdById
-                    );
-                    setCategory(filteredComplaints);
-                }
+                // }
+                // else {
+                //     const filteredComplaints = allComplaints.filter(complaint =>
+                //         complaint.created_by === createdById
+                //     );
+                //     setCategory(filteredComplaints);
+                // }
 
                 handleFilter2("all");
 
@@ -602,7 +603,8 @@ const ComplaintManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
+                            {/* <Input placeholder="Mô tả" /> */}
                         </Form.Item>
 
                     </Form>
@@ -650,7 +652,7 @@ const ComplaintManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Select placeholder="Chọn người khiếu nại" disabled={isDisabled}>
+                            <Select placeholder="Chọn người khiếu nại" disabled={isDisabled || userData?.role !== "isAdmin"}>
                                 {userList?.map(user => (
                                     <Option key={user.id} value={user.id}>
                                         {user.username}
@@ -669,7 +671,7 @@ const ComplaintManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Chủ đề" disabled={isDisabled} />
+                            <Input placeholder="Chủ đề" disabled={isDisabled || userData?.role !== "isAdmin"} />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -682,7 +684,7 @@ const ComplaintManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" disabled={isDisabled} />
+                            <Input.TextArea rows={4} placeholder="Mô tả" disabled={isDisabled || userData?.role !== "isAdmin"} />
                         </Form.Item>
                         <Form.Item
                             name="status"
@@ -693,7 +695,7 @@ const ComplaintManagement = () => {
                                     message: 'Vui lòng chọn trạng thái',
                                 },
                             ]}
-                            style={{ marginBottom: 10, display: userData?.role === 'isAdmin' ? 'block' : 'none' }}
+                            style={{ marginBottom: 10}}
                         >
                             <Select placeholder="Chọn trạng thái">
                                 <Select.Option value="Đang chờ xử lý">Đang chờ xử lý</Select.Option>
@@ -713,7 +715,14 @@ const ComplaintManagement = () => {
                             ]}
                             style={{ marginBottom: 10, display: userData?.role === 'isAdmin' ? 'block' : 'none' }}
                         >
-                            <Input placeholder="Người đảm nhiệm" />
+                            {/* <Input placeholder="Người đảm nhiệm" /> */}
+                            <Select placeholder="Chọn người đảm nhiệm">
+                                {userList?.map(user => (
+                                    <Option key={user.id} value={user.assigned_to_name}>
+                                        {user.username}
+                                    </Option>
+                                ))}
+                            </Select>
                         </Form.Item>
                     </Form>
                 </Modal>
