@@ -267,7 +267,7 @@ const Visitors = () => {
                                     ]}
                                     style={{ marginBottom: 10 }}
                                 >
-                                    <Input placeholder="Nội dung" />
+                                    <Input.TextArea rows={4} placeholder="Nội dung" />
                                 </Form.Item>
                                 <Form.Item
                                     name="role"

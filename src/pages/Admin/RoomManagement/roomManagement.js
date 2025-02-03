@@ -314,20 +314,20 @@ const RoomManagement = () => {
             dataIndex: 'description',
             key: 'description',
         },
-        {
-            title: 'Chủ hộ',
-            dataIndex: 'residents',
-            key: 'residents',
-            render: (text, record) => (
-                <div>
-                    {text && text.length > 0 ? (
-                        `${text[0].username} - ${text[0].email}`
-                    ) : (
-                        'Chưa có chủ phòng'
-                    )}
-                </div>
-            ),
-        },
+        // {
+        //     title: 'Chủ hộ',
+        //     dataIndex: 'residents',
+        //     key: 'residents',
+        //     render: (text, record) => (
+        //         <div>
+        //             {text && text.length > 0 ? (
+        //                 `${text[0].username} - ${text[0].email}`
+        //             ) : (
+        //                 'Chưa có chủ phòng'
+        //             )}
+        //         </div>
+        //     ),
+        // },
         {
             title: 'Hành động',
             key: 'action',
@@ -686,7 +686,7 @@ const RoomManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
 
                     </Form>
@@ -735,7 +735,7 @@ const RoomManagement = () => {
                         >
                             <Input placeholder="Tên" />
                         </Form.Item>
-                        <Form.Item
+                        {/* <Form.Item
                             name="type"
                             label="Loại"
                             rules={[
@@ -747,6 +747,25 @@ const RoomManagement = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <Input placeholder="Loại" />
+                        </Form.Item> */}
+                        <Form.Item
+                            name="type"
+                            label="Loại"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Vui lòng chọn loại phòng',
+                                },
+                            ]}
+                            style={{ marginBottom: 10 }}
+                        >
+                            <Select placeholder="Chọn loại phòng">
+                                {roomTypes.map((type, index) => (
+                                    <Select.Option key={index} value={type}>
+                                        {type}
+                                    </Select.Option>
+                                ))}
+                            </Select>
                         </Form.Item>
                         <Form.Item
                             name="area"
@@ -803,7 +822,7 @@ const RoomManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
 
 

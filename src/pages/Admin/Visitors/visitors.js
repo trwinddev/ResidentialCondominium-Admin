@@ -453,7 +453,8 @@ const Visitors = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Lý do đến" />
+                            {/* <Input placeholder="Lý do đến" /> */}
+                            <Input.TextArea rows={4} placeholder="Lý do đến" />
                         </Form.Item>
                         <Form.Item
                             name="citizenId"
@@ -569,7 +570,7 @@ const Visitors = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Lý do đến" />
+                            <Input.TextArea rows={4} placeholder="Lý do đến" />
                         </Form.Item>
                         <Form.Item
                             name="citizenId"

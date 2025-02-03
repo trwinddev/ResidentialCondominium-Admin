@@ -121,12 +121,12 @@ function Sidebar() {
       link: "/contracts-management",
       icon: <CarryOutOutlined />,
     },
-    // {
-    //   key: "residence-event",
-    //   title: "Quản lý sự kiện cư dân",
-    //   link: "/residence-event",
-    //   icon: <CommentOutlined />,
-    // },
+    {
+      key: "residence-event",
+      title: "Quản lý sự kiện cư dân",
+      link: "/residence-event",
+      icon: <CommentOutlined />,
+    },
     {
       key: "residence-rules",
       title: "Nội quy tòa nhà",

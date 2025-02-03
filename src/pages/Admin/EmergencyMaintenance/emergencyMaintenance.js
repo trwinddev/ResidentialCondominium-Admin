@@ -460,7 +460,7 @@ const EmergencyMaintenance = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
 
                         <Form.Item
@@ -549,7 +549,7 @@ const EmergencyMaintenance = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" disabled={disabled}/>
+                            <Input.TextArea rows={4} placeholder="Mô tả" disabled={disabled}/>
                         </Form.Item>
 
                         <Form.Item
@@ -621,7 +621,7 @@ const EmergencyMaintenance = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Chi tiết giải quyết" />
+                            <Input.TextArea rows={4} placeholder="Chi tiết giải quyết" />
                         </Form.Item>
 
                     </Form>

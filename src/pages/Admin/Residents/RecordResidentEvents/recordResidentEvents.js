@@ -135,24 +135,24 @@ const RecordResidentEvents = () => {
             key: 'created_at',
             render: (text) => moment(text).format('DD-MM-YYYY'),
         },
-        {
-            title: 'Hành động',
-            key: 'action',
-            render: (text, record) => (
-                <div>
-                    <Row>
-                        <Button
-                            size="small"
-                            icon={<EyeOutlined />}
-                            style={{ width: 150, borderRadius: 15, height: 30 }}
-                            onClick={() => handleViewOrder(record.id)}
-                        >
-                            Xem
-                        </Button>
-                    </Row>
-                </div>
-            ),
-        },
+        // {
+        //     title: 'Hành động',
+        //     key: 'action',
+        //     render: (text, record) => (
+        //         <div>
+        //             <Row>
+        //                 <Button
+        //                     size="small"
+        //                     icon={<EyeOutlined />}
+        //                     style={{ width: 150, borderRadius: 15, height: 30 }}
+        //                     onClick={() => handleViewOrder(record.id)}
+        //                 >
+        //                     Xem
+        //                 </Button>
+        //             </Row>
+        //         </div>
+        //     ),
+        // },
     ];
 
 
@@ -296,7 +296,7 @@ const RecordResidentEvents = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
                         <Form.Item
                             name="location"

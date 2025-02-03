@@ -447,7 +447,7 @@ const MaintenancePlanning = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
                         <Form.Item
                             name="start_date"
@@ -539,7 +539,7 @@ const MaintenancePlanning = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Mô tả" />
+                            <Input.TextArea rows={4} placeholder="Mô tả" />
                         </Form.Item>
                         <Form.Item
                             name="start_date"

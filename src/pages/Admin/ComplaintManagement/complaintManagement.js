@@ -277,7 +277,7 @@ const ComplaintManagement = () => {
                             >
                                 {"Chỉnh sửa"}
                             </Button>
-                            <div style={{ marginLeft: 10 }}>
+                            {/* <div style={{ marginLeft: 10 }}>
                                 <Popconfirm
                                     title="Bạn có chắc chắn muốn xóa khiếu nại này không?"
                                     onConfirm={() => handleDeleteCategory(record.id)}
@@ -292,7 +292,7 @@ const ComplaintManagement = () => {
                                         {"Delete"}
                                     </Button>
                                 </Popconfirm>
-                            </div>
+                            </div> */}
                         </Row>
                     )}
                 </div>
@@ -520,7 +520,7 @@ const ComplaintManagement = () => {
                         <div id="account">
                             <div id="account_container">
                                 <Card title="Danh sách khiếu nại" bordered={false} >
-                                    <Table columns={columns} dataSource={category} pagination={{ position: ['bottomCenter'] }}
+                                    <Table columns={columns2} dataSource={category} pagination={{ position: ['bottomCenter'] }}
                                     />
                                 </Card>
                             </div>
