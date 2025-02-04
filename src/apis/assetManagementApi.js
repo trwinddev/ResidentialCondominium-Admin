@@ -10,6 +10,15 @@ const assetManagementApi = {
             throw error;
         }
     },
+    async listAssetExpired() {
+        const url = 'expired';
+        try {
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
     async listAssetReports(id) {
         const url = 'assets/'+id+"/reports";
         try {
@@ -81,7 +90,7 @@ const assetManagementApi = {
         } catch (error) {
             throw error;
         }
-    },  
+    },
     async searchAssetsByName(name) {
         const url = 'assets/searchAssetReport?name=' + name.target.value;
         try {
@@ -90,7 +99,7 @@ const assetManagementApi = {
         } catch (error) {
             throw error;
         }
-    },  
+    },
 }
 
 export default assetManagementApi;

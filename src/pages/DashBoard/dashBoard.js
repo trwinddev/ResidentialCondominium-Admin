@@ -83,7 +83,7 @@ const DashBoard = () => {
     useEffect(() => {
         (async () => {
             try {
-                await assetManagementApi.listAssetManagement().then((res) => {
+                await assetManagementApi.listAssetExpired().then((res) => {
                     setAssetList(res.data);
                 });
                 await dashBoardApi.getAssetStatistics().then((res) => {
