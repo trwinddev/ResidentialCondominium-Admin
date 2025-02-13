@@ -35,7 +35,7 @@ const ResetPassword = () => {
                             'Cập nhật mật khẩu thành công',
 
                     });
-                    history.push("/login");
+                    window.location.href = "http://localhost:3500/login";
                 }
             })
             .catch(error => {
