@@ -20,7 +20,8 @@ import {
     Card,
     notification,
     Select,
-    InputNumber
+    InputNumber,
+    Tag
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import roomManagementApi from "../../../apis/roomManagementApi";
@@ -276,9 +277,9 @@ const RoomManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tên',
@@ -294,7 +295,7 @@ const RoomManagement = () => {
             title: 'Diện tích',
             dataIndex: 'area',
             key: 'area',
-            render: (text) => <div>{text}m2</div>,
+            render: (text) => <div>{text} m²</div>,
 
         },
         // {
@@ -308,12 +309,23 @@ const RoomManagement = () => {
             title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
+            render: (status) => {
+                let color = '';
+                switch(status) {
+                    case 'Đã sử dụng':
+                        color = 'green';
+                        break;
+                    default:
+                        color = 'default';
+                }
+                return <Tag color={color}>{status}</Tag>;
+            },
         },
-        {
-            title: 'Mô tả',
-            dataIndex: 'description',
-            key: 'description',
-        },
+        // {
+        //     title: 'Mô tả',
+        //     dataIndex: 'description',
+        //     key: 'description',
+        // },
         // {
         //     title: 'Chủ hộ',
         //     dataIndex: 'residents',
@@ -333,7 +345,7 @@ const RoomManagement = () => {
             key: 'action',
             render: (text, record) => (
                 <div>
-                    <Row style={{display: 'flex', flexDirection: 'column'}}>
+                    <Row style={{display: 'flex'}}>
                         <Button
                             size="small"
                             icon={<EditOutlined />}
@@ -342,7 +354,7 @@ const RoomManagement = () => {
                         >
                             {"Chỉnh sửa"}
                         </Button>
-                        <div style={{ marginTop: 6 }}>
+                        <div style={{ marginLeft: 10 }}>
                             <Popconfirm
                                 title="Bạn có chắc chắn xóa phòng này?"
                                 onConfirm={() => handleDeleteCategory(record.id)}
@@ -387,7 +399,20 @@ const RoomManagement = () => {
 
     ];
 
-    const roomTypes = ['Căn hộ thông thường', 'Căn hộ studio', 'Shophouse', 'Căn hộ Duplex', ' Căn hộ Sky Villa'];
+    const roomTypes = [
+            'Chung cư cao cấp',
+            'Chung cư tầm trung',
+            'Chung cư bình dân',
+            'Căn hộ Studio',
+            'Căn hộ 1 phòng ngủ',
+            'Căn hộ 2 phòng ngủ',
+            'Căn hộ 3 phòng ngủ trở lên',
+            'Căn hộ Officetel',
+            'Căn hộ Shophouse',
+            'Căn hộ Duplex',
+            'Căn hộ Penthouse',
+            'Căn hộ Sky Villa'
+        ];
 
     const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -633,7 +658,7 @@ const RoomManagement = () => {
                         </Form.Item>
                         <Form.Item
                             name="area"
-                            label="Diện tích (m2)"
+                            label="Diện tích (m²)"
                             rules={[
                                 {
                                     required: true,
@@ -643,7 +668,8 @@ const RoomManagement = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <InputNumber
-                                placeholder="Diện tích (m2)"
+                                style={{ width: '100%' }}
+                                placeholder="Diện tích (m²)"
                             />
                         </Form.Item>
                         {/* <Form.Item
@@ -769,7 +795,7 @@ const RoomManagement = () => {
                         </Form.Item>
                         <Form.Item
                             name="area"
-                            label="Diện tích (m2)"
+                            label="Diện tích (m²)"
                             rules={[
                                 {
                                     required: true,
@@ -779,7 +805,7 @@ const RoomManagement = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <InputNumber
-                                placeholder="Diện tích (m2)"
+                                placeholder="Diện tích (m²)"
                             />
                         </Form.Item>
                         {/* <Form.Item

@@ -33,15 +33,12 @@ const AccountManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
+            title: '#',
             dataIndex: 'id',
-            key: 'index',
-            render: (value, item, index) => (
-                (page - 1) * 10 + (index + 1)
-            ),
+            key: 'id',
         },
         {
-            title: 'Tên',
+            title: 'Họ tên',
             dataIndex: 'username',
             key: 'username',
             render: (text, record) => (
@@ -65,7 +62,7 @@ const AccountManagement = () => {
             key: 'phone',
         },
         {
-            title: 'Role',
+            title: 'Phân quyền',
             dataIndex: 'role',
             key: 'role',
             width: '12%',
@@ -412,20 +409,20 @@ const AccountManagement = () => {
                     >
                         <Form.Item
                             name="name"
-                            label="Tên"
+                            label="Họ tên"
                             hasFeedback
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên',
+                                    message: 'Vui lòng nhập họ tên',
                                 },
-                                { max: 100, message: 'Tên tối đa 100 ký tự' },
-                                { min: 5, message: 'Tên ít nhất 5 ký tự' },
+                                { max: 100, message: 'Họ tên tối đa 100 ký tự' },
+                                { min: 5, message: 'Họ tên ít nhất 5 ký tự' },
                             ]
                             }
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên" />
+                            <Input placeholder="Họ tên" />
                         </Form.Item>
 
                         <Form.Item
@@ -501,6 +498,7 @@ const AccountManagement = () => {
                                 <Option value="isAdmin">Admin</Option>
                                 <Option value="isSecurity">Bảo vệ</Option>
                                 <Option value="isReceptionist">Lễ tân</Option>
+                                <Option value="resident">Cư dân</Option>
                             </Select>
                         </Form.Item>
 

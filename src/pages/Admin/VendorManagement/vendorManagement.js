@@ -206,12 +206,12 @@ const VendorManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
-            title: 'Tên',
+            title: 'Họ tên',
             dataIndex: 'name',
             key: 'name',
         },
@@ -230,12 +230,12 @@ const VendorManagement = () => {
             dataIndex: 'address',
             key: 'address',
         },
-        {
-            title: 'Ngày tạo',
-            dataIndex: 'created_at',
-            key: 'created_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     dataIndex: 'created_at',
+        //     key: 'created_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
         {
             title: 'Hành động',
             key: 'action',
@@ -378,16 +378,16 @@ const VendorManagement = () => {
                     >
                         <Form.Item
                             name="name"
-                            label="Tên"
+                            label="Họ tên"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên',
+                                    message: 'Vui lòng nhập họ tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên" />
+                            <Input placeholder="Họ tên" />
                         </Form.Item>
                         <Form.Item
                             name="email"
@@ -472,16 +472,16 @@ const VendorManagement = () => {
                     >
                          <Form.Item
                             name="name"
-                            label="Tên"
+                            label="Họ tên"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên',
+                                    message: 'Vui lòng nhập họ tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên" />
+                            <Input placeholder="Họ tên" />
                         </Form.Item>
                         <Form.Item
                             name="email"

@@ -19,7 +19,8 @@ import {
     Select,
     notification,
     DatePicker,
-    Card
+    Card,
+    Popconfirm
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -93,9 +94,9 @@ const Visitors = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tiêu đề',
@@ -108,24 +109,82 @@ const Visitors = () => {
             key: 'content',
         },
         {
-            title: 'Ngày bắt đầu',
+            title: 'Ngày gửi',
             dataIndex: 'start_date',
             key: 'start_date',
             render: (text) => moment(text).format('DD-MM-YYYY'),
+            width: '10%'
         },
-        {
-            title: 'Ngày kết thúc',
-            dataIndex: 'end_date',
-            key: 'end_date',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
+        // {
+        //     title: 'Ngày kết thúc',
+        //     dataIndex: 'end_date',
+        //     key: 'end_date',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
         // {
         //     title: 'Ngày tạo',
         //     dataIndex: 'created_at',
         //     key: 'created_at',
         //     render: (text) => moment(text).format('DD-MM-YYYY'),
         // },
+        {
+            title: 'Hành động',
+            key: 'action',
+            render: (text, record) => (
+                <div>
+                    <Row>
+                        <div>
+                            <Popconfirm
+                                title="Bạn có chắc chắn xóa thông báo này?"
+                                onConfirm={() => handleDeleteCategory(record.id)}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <Button
+                                    size="small"
+                                    icon={<DeleteOutlined />}
+                                    style={{ width: 150, borderRadius: 15, height: 30 }}
+                                >
+                                    {"Xóa"}
+                                </Button>
+                            </Popconfirm>
+                        </div>
+                    </Row>
+                </div>
+            ),
+        },
     ];
+
+    const handleDeleteCategory = async (id) => {
+        setLoading(true);
+        try {
+            await userApi.deleteNotification(id).then(response => {
+                if (response === undefined) {
+                    notification["error"]({
+                        message: `Thông báo`,
+                        description:
+                            'Xóa thông báo thất bại',
+
+                    });
+                    setLoading(false);
+                }
+                else {
+                    notification["success"]({
+                        message: `Thông báo`,
+                        description:
+                            'Xóa thông báo thành công',
+
+                    });
+                    handleList();
+                    setLoading(false);
+                }
+            }
+            );
+
+        } catch (error) {
+            console.log('Failed to fetch event list:' + error);
+        }
+    }
 
     const handleList = () => {
         (async () => {
@@ -271,16 +330,16 @@ const Visitors = () => {
                                 </Form.Item>
                                 <Form.Item
                                     name="role"
-                                    label="Vai trò"
+                                    label="Đối tượng nhận thông báo"
                                     rules={[
                                         {
                                             required: true,
-                                            message: 'Vui lòng chọn vai trò',
+                                            message: 'Vui lòng chọn đối tượng',
                                         },
                                     ]}
                                     style={{ marginBottom: 10 }}
                                 >
-                                    <Select placeholder="Chọn vai trò">
+                                    <Select placeholder="Chọn đối tượng">
                                         <Option value="resident">Cư dân</Option>
                                         <Option value="isReceptionist">Lễ tân</Option>
                                         <Option value="isSecurity">Bảo vệ</Option>

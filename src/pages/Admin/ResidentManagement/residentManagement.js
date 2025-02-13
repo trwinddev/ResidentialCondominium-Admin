@@ -85,7 +85,9 @@ const ResidentManagement = () => {
 
     const handleUpdateCategory = async (values) => {
         setLoading(true);
+        console.log(1);
         try {
+
             const categoryList = {
                 user_id: values.user_id,
                 subject: values.subject,

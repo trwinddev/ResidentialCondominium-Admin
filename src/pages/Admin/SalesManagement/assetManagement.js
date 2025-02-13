@@ -152,9 +152,9 @@ const SalesManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tên',
@@ -346,7 +346,7 @@ const SalesManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày sự kiện" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày sự kiện" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="description"
@@ -372,7 +372,7 @@ const SalesManagement = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <InputNumber placeholder="Số lượng" />
+                            <InputNumber style={{ width: '100%' }} placeholder="Số lượng" />
                         </Form.Item>
 
                     </Form>

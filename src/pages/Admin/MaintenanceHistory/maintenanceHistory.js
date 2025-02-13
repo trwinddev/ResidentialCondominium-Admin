@@ -205,9 +205,9 @@ const MaintenanceHistory = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tên kế hoạch bảo trì',
@@ -224,11 +224,11 @@ const MaintenanceHistory = () => {
                 return formattedCost;
             },
         },
-        {
-            title: 'Mô tả',
-            dataIndex: 'description',
-            key: 'description',
-        },
+        // {
+        //     title: 'Mô tả',
+        //     dataIndex: 'description',
+        //     key: 'description',
+        // },
         {
             title: 'Ngày tạo',
             dataIndex: 'created_at',
@@ -424,7 +424,7 @@ const MaintenanceHistory = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày bảo trì" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày bảo trì" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="cost"
@@ -522,7 +522,7 @@ const MaintenanceHistory = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="cost"

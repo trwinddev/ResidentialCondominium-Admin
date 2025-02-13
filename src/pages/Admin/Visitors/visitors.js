@@ -51,11 +51,11 @@ const Visitors = () => {
         try {
             const categoryList = {
                 "name": values.name,
-                "email": values.email,
+                "email": values.email ?? null,
                 "phone": values.phone,
                 "entryDate": values.entryDate.format('YYYY-MM-DD'),
                 "reasonToVisit": values.reasonToVisit,
-                "citizenId": values.citizenId,
+                "address": values.address,
             };
             return visitorsApi.createVisitors(categoryList).then(response => {
                 if (response === undefined) {
@@ -90,7 +90,7 @@ const Visitors = () => {
                 "phone": values.phone,
                 "entryDate": values.entryDate.format('YYYY-MM-DD'),
                 "reasonToVisit": values.reasonToVisit,
-                "citizenId": values.citizenId,
+                "address": values.address,
             };
             return visitorsApi.updateVisitors(categoryList, id).then(response => {
                 if (response === undefined) {
@@ -180,7 +180,7 @@ const Visitors = () => {
                     phone: response.phone,
                     entryDate: dayjs(response.entryDate),
                     reasonToVisit: response.reasonToVisit,
-                    citizenId: response.citizenId,
+                    address: response.address,
                 });
                 console.log(form2);
                 setLoading(false);
@@ -201,12 +201,12 @@ const Visitors = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
-            title: 'Tên',
+            title: 'Họ tên',
             dataIndex: 'name',
             key: 'name',
         },
@@ -214,6 +214,7 @@ const Visitors = () => {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
+            render: (email) => email || '-',
         },
         {
             title: 'Số điện thoại',
@@ -226,22 +227,22 @@ const Visitors = () => {
             key: 'entryDate',
             render: (text) => moment(text).format('DD-MM-YYYY'),
         },
+        // {
+        //     title: 'Lý do đến',
+        //     dataIndex: 'reasonToVisit',
+        //     key: 'reasonToVisit',
+        // },
         {
-            title: 'Lý do đến',
-            dataIndex: 'reasonToVisit',
-            key: 'reasonToVisit',
+            title: 'Địa chỉ',
+            dataIndex: 'address',
+            key: 'address',
         },
-        {
-            title: 'Số CMND',
-            dataIndex: 'citizenId',
-            key: 'citizenId',
-        },
-        {
-            title: 'Ngày tạo',
-            key: 'created_at',
-            dataIndex: 'created_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
+        // {
+        //     title: 'Ngày tạo',
+        //     key: 'created_at',
+        //     dataIndex: 'created_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
         {
             title: 'Hành động',
             key: 'action',
@@ -384,33 +385,16 @@ const Visitors = () => {
                     >
                         <Form.Item
                             name="name"
-                            label="Tên"
+                            label="Họ tên"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên',
+                                    message: 'Vui lòng nhập họ tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên" />
-                        </Form.Item>
-                        <Form.Item
-                            name="email"
-                            label="Email"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập email',
-                                },
-                                {
-                                    type: 'email',
-                                    message: 'Email không hợp lệ',
-                                },
-                            ]}
-                            style={{ marginBottom: 10 }}
-                        >
-                            <Input placeholder="Email" />
+                            <Input placeholder="Họ tên" />
                         </Form.Item>
                         <Form.Item
                             name="phone"
@@ -430,6 +414,36 @@ const Visitors = () => {
                             <Input placeholder="Số điện thoại" />
                         </Form.Item>
                         <Form.Item
+                            name="email"
+                            label="Email"
+                            rules={[
+                                {
+                                    required: false,
+                                    message: 'Vui lòng nhập email',
+                                },
+                                {
+                                    type: 'email',
+                                    message: 'Email không hợp lệ',
+                                },
+                            ]}
+                            style={{ marginBottom: 10 }}
+                        >
+                            <Input placeholder="Email" />
+                        </Form.Item>
+                        <Form.Item
+                            name="address"
+                            label="Địa chỉ"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Vui lòng nhập địa chỉ',
+                                },
+                            ]}
+                            style={{ marginBottom: 10 }}
+                        >
+                            <Input placeholder="Địa chỉ" />
+                        </Form.Item>
+                        <Form.Item
                             name="entryDate"
                             label="Ngày vào"
                             rules={[
@@ -440,7 +454,7 @@ const Visitors = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày vào" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày vào" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="reasonToVisit"
@@ -455,19 +469,6 @@ const Visitors = () => {
                         >
                             {/* <Input placeholder="Lý do đến" /> */}
                             <Input.TextArea rows={4} placeholder="Lý do đến" />
-                        </Form.Item>
-                        <Form.Item
-                            name="citizenId"
-                            label="Số CMND"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập số CMND',
-                                },
-                            ]}
-                            style={{ marginBottom: 10 }}
-                        >
-                            <Input placeholder="Số CMND" />
                         </Form.Item>
 
                     </Form>
@@ -505,29 +506,16 @@ const Visitors = () => {
                     >
                         <Form.Item
                             name="name"
-                            label="Tên"
+                            label="Họ tên"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Vui lòng nhập tên',
+                                    message: 'Vui lòng nhập họ tên',
                                 },
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <Input placeholder="Tên" />
-                        </Form.Item>
-                        <Form.Item
-                            name="email"
-                            label="Email"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập email',
-                                },
-                            ]}
-                            style={{ marginBottom: 10 }}
-                        >
-                            <Input placeholder="Email" />
+                            <Input placeholder="Họ tên" />
                         </Form.Item>
                         <Form.Item
                             name="phone"
@@ -547,6 +535,32 @@ const Visitors = () => {
                             <Input placeholder="Số điện thoại" />
                         </Form.Item>
                         <Form.Item
+                            name="email"
+                            label="Email"
+                            rules={[
+                                {
+                                    required: false,
+                                    message: 'Vui lòng nhập email',
+                                },
+                            ]}
+                            style={{ marginBottom: 10 }}
+                        >
+                            <Input placeholder="Email" />
+                        </Form.Item>
+                        <Form.Item
+                            name="address"
+                            label="Địa chỉ"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Vui lòng nhập địa chỉ',
+                                },
+                            ]}
+                            style={{ marginBottom: 10 }}
+                        >
+                            <Input placeholder="Địa chỉ" />
+                        </Form.Item>
+                        <Form.Item
                             name="entryDate"
                             label="Ngày vào"
                             rules={[
@@ -557,7 +571,7 @@ const Visitors = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày vào" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày vào" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="reasonToVisit"
@@ -571,19 +585,6 @@ const Visitors = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <Input.TextArea rows={4} placeholder="Lý do đến" />
-                        </Form.Item>
-                        <Form.Item
-                            name="citizenId"
-                            label="Số CMND"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng nhập số CMND',
-                                },
-                            ]}
-                            style={{ marginBottom: 10 }}
-                        >
-                            <Input placeholder="Số CMND" />
                         </Form.Item>
 
                     </Form>

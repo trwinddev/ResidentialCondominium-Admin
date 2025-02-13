@@ -79,12 +79,12 @@ function Sidebar() {
       link: "/asset-management",
       icon: <ContainerOutlined />,
     },
-    {
-      key: "sales-management",
-      title: "Quản lý mua bán thiết bị",
-      link: "/sales-management",
-      icon: <BarcodeOutlined />,
-    },
+    // {
+    //   key: "sales-management",
+    //   title: "Quản lý mua bán thiết bị",
+    //   link: "/sales-management",
+    //   icon: <BarcodeOutlined />,
+    // },
     // {
     //   key: "asset-report",
     //   title: "Báo cáo thiết bị",

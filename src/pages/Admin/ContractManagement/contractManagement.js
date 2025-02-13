@@ -235,9 +235,9 @@ const ContractManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Nhà cung cấp',
@@ -263,11 +263,11 @@ const ContractManagement = () => {
             render: (text) => moment(text).format('DD-MM-YYYY'),
 
         },
-        {
-            title: 'Mô tả',
-            dataIndex: 'description',
-            key: 'description',
-        },
+        // {
+        //     title: 'Mô tả',
+        //     dataIndex: 'description',
+        //     key: 'description',
+        // },
         {
             title: 'File đính kèm',
             dataIndex: 'file_url',

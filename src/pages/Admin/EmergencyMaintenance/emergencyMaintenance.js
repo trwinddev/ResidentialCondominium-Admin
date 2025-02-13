@@ -20,7 +20,8 @@ import {
     notification,
     Select,
     DatePicker,
-    Card
+    Card,
+    Tag
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import emergencyMaintenanceApi from "../../../apis/emergencyMaintenanceApi";
@@ -210,7 +211,7 @@ const EmergencyMaintenance = () => {
 
     const columns = [
         {
-            title: 'ID',
+            title: '#',
             dataIndex: 'id',
             key: 'id',
         },
@@ -239,22 +240,37 @@ const EmergencyMaintenance = () => {
             title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
+            render: (status) => {
+                let color = '';
+                switch(status) {
+                    case 'Đã xong':
+                        color = 'green';
+                        break;
+                    case 'Đang xử lý':
+                        color = 'orange';
+                        break;
+                    default:
+                        color = 'default';
+                }
+                return <Tag color={color}>{status}</Tag>;
+            },
         },
-        {
-            title: 'Ngày giải quyết',
-            dataIndex: 'resolved_at',
-            key: 'resolved_at',
-            render: (text) => moment(text).format('DD-MM-YYYY'),
-        },
-        {
-            title: 'Mô tả giải quyết',
-            dataIndex: 'resolved_description',
-            key: 'resolved_description',
-        },
+        // {
+        //     title: 'Ngày giải quyết',
+        //     dataIndex: 'resolved_at',
+        //     key: 'resolved_at',
+        //     render: (text) => moment(text).format('DD-MM-YYYY'),
+        // },
+        // {
+        //     title: 'Mô tả giải quyết',
+        //     dataIndex: 'resolved_description',
+        //     key: 'resolved_description',
+        // },
         {
             title: 'Người giải quyết',
             dataIndex: 'resolved_by_name',
             key: 'resolved_by_name',
+            render: (resolved_by_name) => resolved_by_name || '-'
         },
         // {
         //     title: 'Ngày tạo',

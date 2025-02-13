@@ -55,14 +55,14 @@ const ResidenceRules = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo quy định cư dân thất bại',
+                            'Tạo nội quy tòa nhà thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Tạo quy định cư dân thành công',
+                            'Tạo nội quy tòa nhà thành công',
                     });
                     setOpenModalCreate(false);
                     handleCategoryList();
@@ -86,14 +86,14 @@ const ResidenceRules = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa quy định cư dân thất bại',
+                            'Chỉnh sửa nội quy tòa nhà thất bại',
                     });
                 }
                 else {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Chỉnh sửa quy định cư dân thành công',
+                            'Chỉnh sửa nội quy tòa nhà thành công',
                     });
                     handleCategoryList();
                     setOpenModalUpdate(false);
@@ -134,7 +134,7 @@ const ResidenceRules = () => {
                     notification["error"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa quy định cư dân thất bại',
+                            'Xóa nội quy tòa nhà thất bại',
 
                     });
                     setLoading(false);
@@ -143,7 +143,7 @@ const ResidenceRules = () => {
                     notification["success"]({
                         message: `Thông báo`,
                         description:
-                            'Xóa quy định cư dân thành công',
+                            'Xóa nội quy tòa nhà thành công',
 
                     });
                     handleCategoryList();
@@ -187,23 +187,27 @@ const ResidenceRules = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
+            width: '5%'
         },
         {
             title: 'Tên',
             dataIndex: 'title',
             key: 'title',
+            width: '30%'
         },
         {
             title: 'Nội dung',
             dataIndex: 'content',
             key: 'content',
+            // width: '25%'
         },
         {
             title: 'Hành động',
             key: 'action',
+            width: '25%',
             render: (text, record) => (
                 <div>
                     <Row>
@@ -217,7 +221,7 @@ const ResidenceRules = () => {
                         <div
                             style={{ marginLeft: 10 }}>
                             <Popconfirm
-                                title="Bạn có chắc chắn xóa quy định cư dân này?"
+                                title="Bạn có chắc chắn xóa nội quy tòa nhà này?"
                                 onConfirm={() => handleDeleteCategory(record.id)}
                                 okText="Yes"
                                 cancelText="No"
@@ -286,7 +290,7 @@ const ResidenceRules = () => {
                                     <Col span="6">
                                         <Row justify="end">
                                             <Space>
-                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo quy định cư dân</Button>
+                                                <Button onClick={showModal} icon={<PlusOutlined />} style={{ marginLeft: 10 }} >Tạo nội quy tòa nhà</Button>
                                             </Space>
                                         </Row>
                                     </Col>
@@ -309,7 +313,7 @@ const ResidenceRules = () => {
                 </div>
 
                 <Modal
-                    title="Tạo quy định cư dân"
+                    title="Tạo nội quy tòa nhà"
                     visible={openModalCreate}
                     style={{ top: 100 }}
                     onOk={() => {
@@ -369,7 +373,7 @@ const ResidenceRules = () => {
                 </Modal>
 
                 <Modal
-                    title="Chỉnh sửa quy định cư dân"
+                    title="Chỉnh sửa nội quy tòa nhà"
                     visible={openModalUpdate}
                     style={{ top: 100 }}
                     onOk={() => {

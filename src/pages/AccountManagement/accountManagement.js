@@ -65,7 +65,7 @@ const AccountManagement = () => {
             key: 'phone',
         },
         {
-            title: 'Role',
+            title: 'Phân quyền',
             dataIndex: 'role',
             key: 'role',
             width: '12%',
@@ -501,6 +501,7 @@ const AccountManagement = () => {
                                 <Option value="isAdmin">Admin</Option>
                                 <Option value="isSecurity">Bảo vệ</Option>
                                 <Option value="isReceptionist">Lễ tân</Option>
+                                <Option value="resident">Cư dân</Option>
                             </Select>
                         </Form.Item>
 

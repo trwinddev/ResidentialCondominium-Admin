@@ -239,9 +239,9 @@ const MaintenancePlanning = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Tên thiết bị',
@@ -460,7 +460,7 @@ const MaintenancePlanning = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày bắt đầu" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày bắt đầu" format="DD-MM-YYYY" />
                         </Form.Item>
                         <Form.Item
                             name="end_date"
@@ -473,7 +473,7 @@ const MaintenancePlanning = () => {
                             ]}
                             style={{ marginBottom: 10 }}
                         >
-                            <DatePicker placeholder="Ngày kết thúc" format="DD-MM-YYYY" />
+                            <DatePicker style={{ width: '100%' }} placeholder="Ngày kết thúc" format="DD-MM-YYYY" />
                         </Form.Item>
                     </Form>
                 </Modal>
@@ -553,6 +553,7 @@ const MaintenancePlanning = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <DatePicker
+                                style={{ width: '100%' }}
                                 format="DD-MM-YYYY"
                                 disabledDate={(current) => current && current < moment().startOf('day')}
                             />
@@ -578,6 +579,7 @@ const MaintenancePlanning = () => {
                             style={{ marginBottom: 10 }}
                         >
                             <DatePicker
+                                style={{ width: '100%' }}
                                 format="DD-MM-YYYY"
                                 disabledDate={(current) => current && current < moment().startOf('day')}
                             />

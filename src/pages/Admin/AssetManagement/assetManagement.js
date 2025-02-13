@@ -20,7 +20,8 @@ import {
     notification,
     Select,
     InputNumber,
-    Card
+    Card,
+    Tag
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -239,9 +240,9 @@ const AssetManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Ảnh',
@@ -279,12 +280,27 @@ const AssetManagement = () => {
             title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
+            render: (status) => {
+                let color = '';
+                switch(status) {
+                    case 'Đang sử dụng':
+                        color = 'green';
+                        break;
+                    case 'Bảo trì':
+                        color = 'orange';
+                        break;
+                    default:
+                        color = 'default';
+                }
+                return <Tag color={color}>{status}</Tag>;
+            },
         },
         {
             title: 'Danh mục',
             dataIndex: 'category_name',
             key: 'category_name',
         },
+
         // {
         //     title: 'Ngày tạo',
         //     key: 'created_at',

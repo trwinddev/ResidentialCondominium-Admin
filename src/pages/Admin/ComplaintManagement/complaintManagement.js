@@ -20,7 +20,8 @@ import {
     notification,
     Select,
     DatePicker,
-    Card
+    Card,
+    Tag
 } from 'antd';
 import React, { useEffect, useState } from 'react';
 import complaintApi from "../../../apis/complaintApi";
@@ -95,8 +96,9 @@ const ComplaintManagement = () => {
                 description: values.description,
                 status: values.status,
                 progress: values.progress || progress,
-                assigned_to: values.assigned_to,
+                assigned_to: values.assigned_to || JSON.parse(localStorage.getItem('user'))?.id,
             }
+            console.log(categoryList)
             return complaintApi.updateComplaint(categoryList, id).then(response => {
                 if (response === undefined) {
                     notification["error"]({
@@ -223,9 +225,9 @@ const ComplaintManagement = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Chủ hộ khiếu nại',
@@ -303,9 +305,9 @@ const ComplaintManagement = () => {
 
     const columns2 = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Chủ hộ khiếu nại',
@@ -331,6 +333,20 @@ const ComplaintManagement = () => {
             title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
+            render: (status) => {
+                let color = '';
+                switch(status) {
+                    case 'Đã xong':
+                        color = 'green';
+                        break;
+                    case 'Đang xử lý':
+                        color = 'orange';
+                        break;
+                    default:
+                        color = 'default';
+                }
+                return <Tag color={color}>{status}</Tag>;
+            },
         },
         // {
         //     title: 'Đánh giá',
@@ -341,6 +357,7 @@ const ComplaintManagement = () => {
             title: 'Đảm nhiệm bởi',
             dataIndex: 'assigned_to_name',
             key: 'assigned_to_name',
+            render: (assigned_to_name) => assigned_to_name || '-'
         },
         {
             title: 'Hành động',
@@ -708,10 +725,10 @@ const ComplaintManagement = () => {
                             name="assigned_to"
                             label="Người đảm nhiệm"
                             rules={[
-                                {
-                                    required: true,
-                                    message: 'Vui lòng chọn người đảm nhiệm',
-                                },
+                                // {
+                                //     required: true,
+                                //     message: 'Vui lòng chọn người đảm nhiệm',
+                                // },
                             ]}
                             style={{ marginBottom: 10, display: userData?.role === 'isAdmin' ? 'block' : 'none' }}
                         >

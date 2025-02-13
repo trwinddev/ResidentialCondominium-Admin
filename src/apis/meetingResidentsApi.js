@@ -82,7 +82,25 @@ const meetingResidentsApi = {
         } catch (error) {
             throw error;
         }
-    },  
+    },
+    async updateMeeting(data, id) {
+        const url = 'meetings/' + id;
+        try {
+            const response = await axiosClient.put(url, data);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
+    async deleteMeeting(id) {
+        const url = 'meetings/' + id;
+        try {
+            const response = await axiosClient.delete(url);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 }
 
 export default meetingResidentsApi;

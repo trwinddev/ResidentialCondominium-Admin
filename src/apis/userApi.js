@@ -85,7 +85,17 @@ const userApi = {
     listNotification() {
         const url = '/notifications';
         return axiosClient.get(url);
-    }
+    },
+
+    deleteNotification(id) {
+        const url = 'notifications/' + id;
+        try {
+            const response = axiosClient.delete(url);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 
 }
 

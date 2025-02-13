@@ -25,6 +25,7 @@ import React, { useEffect, useState } from 'react';
 import dashBoardApi from "../../apis/dashBoardApi";
 import assetManagementApi from "../../apis/assetManagementApi";
 import "./dashBoard.css";
+import moment from 'moment';
 
 
 const DashBoard = () => {
@@ -39,9 +40,9 @@ const DashBoard = () => {
 
     const columns = [
         {
-            title: 'ID',
-            key: 'index',
-            render: (text, record, index) => index + 1,
+            title: '#',
+            dataIndex: 'id',
+            key: 'id',
         },
         {
             title: 'Ảnh',
@@ -51,23 +52,24 @@ const DashBoard = () => {
             width: '10%'
         },
         {
-            title: 'Tên',
+            title: 'Tên thiết bị',
             dataIndex: 'name',
             key: 'name',
         },
-        {
-            title: 'Mô tả',
-            dataIndex: 'description',
-            key: 'description',
-        },
-        {
-            title: 'Giá trị',
-            dataIndex: 'value',
-            key: 'value',
-            render: (text, record) => {
-                return Number(record.value).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-            },
-        },
+
+        // {
+        //     title: 'Mô tả',
+        //     dataIndex: 'description',
+        //     key: 'description',
+        // },
+        // {
+        //     title: 'Giá trị',
+        //     dataIndex: 'value',
+        //     key: 'value',
+        //     render: (text, record) => {
+        //         return Number(record.value).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        //     },
+        // },
         {
             title: 'Vị trí',
             dataIndex: 'location',
@@ -77,7 +79,27 @@ const DashBoard = () => {
             title: 'Trạng thái',
             dataIndex: 'status',
             key: 'status',
-        }
+            render: (status) => {
+                let color = '';
+                switch(status) {
+                    case 'Đang sử dụng':
+                        color = 'green';
+                        break;
+                    case 'Bảo trì':
+                        color = 'orange';
+                        break;
+                    default:
+                        color = 'default';
+                }
+                return <Tag color={color}>{status}</Tag>;
+            },
+        },
+        {
+            title: 'Ngày bảo trì',
+            dataIndex: 'maintenance_start_date',
+            key: 'maintenance_start_date',
+            render: (text) => moment(text).format('DD-MM-YYYY'),
+        },
     ];
 
     useEffect(() => {
@@ -120,7 +142,7 @@ const DashBoard = () => {
                                     <div className='card_number'>
                                         <div>
                                             <div className='number_total'>{statisticList?.userCount}</div>
-                                            <div className='title_total'>Số thành viên</div>
+                                            <div className='title_total'>Số cư dân</div>
                                         </div>
                                         <div>
                                             <ContactsTwoTone style={{ fontSize: 48 }} />
@@ -177,7 +199,7 @@ const DashBoard = () => {
                             </Col>
                         </Row>
                         <Row gutter={12} style={{ marginTop: 20 }}>
-                            <Col span={6}>
+                            {/* <Col span={6}>
                                 <Card className="card_total" bordered={false}>
                                     <div className='card_number'>
                                         <div>
@@ -189,7 +211,7 @@ const DashBoard = () => {
                                         </div>
                                     </div>
                                 </Card>
-                            </Col>
+                            </Col> */}
                             <Col span={6}>
                                 <Card className="card_total" bordered={false}>
                                     <div className='card_number'>
